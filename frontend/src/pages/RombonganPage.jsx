@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, Users, MapPin, Calendar, ClipboardList, CheckCircle } from "lucide-react";
+import { MessageCircle, Users, MapPin, ClipboardList, CheckCircle } from "lucide-react";
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

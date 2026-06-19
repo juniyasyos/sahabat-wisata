@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Clock, MapPin, CheckCircle, MessageCircle, ArrowRight, Filter } from "lucide-react";
+import { Clock, MapPin, CheckCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { travelRoutes } from "../data/travelRoutes";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 import PageHero from "../components/PageHero";

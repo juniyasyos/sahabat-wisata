@@ -1,6 +1,6 @@
 import { Bus, Mountain, Car, Users, ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
+import { buildWhatsAppUrl } from "../utils/whatsapp";
 
 const services = [
   { icon: Bus, title: "Travel Reguler", desc: "Door-to-door antar kota setiap hari. Jember ke Surabaya, Malang, Bali, dan kota lainnya.", to: "/travel", color: "bg-blue-50 text-blue-600", ctaMsg: "Halo, saya ingin tanya tentang layanan Travel Reguler." },

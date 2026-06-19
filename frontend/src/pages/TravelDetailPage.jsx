@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { Clock, MapPin, CheckCircle, XCircle, MessageCircle, ArrowLeft, Users } from "lucide-react";
+import { Clock, MapPin, CheckCircle, MessageCircle, ArrowLeft, Users } from "lucide-react";
 import { travelRoutes } from "../data/travelRoutes";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";

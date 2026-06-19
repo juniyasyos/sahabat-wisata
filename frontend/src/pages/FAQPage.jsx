@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
 import { faqs } from "../data/faqs";
-import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
+import { buildWhatsAppUrl } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingWAButton from "../components/FloatingWAButton";

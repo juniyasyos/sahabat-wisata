@@ -1,4 +1,4 @@
-import { Calendar, Users, CheckCircle, X, MessageCircle, ArrowRight } from "lucide-react";
+import { Calendar, Users, CheckCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { tourPackages } from "../data/tourPackages";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";

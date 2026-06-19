@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
-import { siteConfig } from "../data/siteConfig";
 
 const navLinks = [
   { label: "Travel",   to: "/travel" },

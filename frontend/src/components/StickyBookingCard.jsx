@@ -1,4 +1,4 @@
-import { MessageCircle, Clock, Calendar } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { buildWhatsAppUrl, formatPrice } from "../utils/whatsapp";
 
 export default function StickyBookingCard({ title, price, priceLabel = "/ orang", info = [], waMessage, ctaLabel = "Pesan via WhatsApp", note }) {
