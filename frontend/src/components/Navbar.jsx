@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 import { siteConfig } from "../data/siteConfig";
 
 const navLinks = [
-  { label: "Travel",  href: "#layanan" },
-  { label: "Wisata",  href: "#wisata" },
-  { label: "Armada",  href: "#armada" },
-  { label: "FAQ",     href: "#faq" },
+  { label: "Travel",   to: "/travel" },
+  { label: "Wisata",   to: "/wisata" },
+  { label: "Armada",   to: "/sewa-armada" },
+  { label: "Rombongan", to: "/rombongan" },
+  { label: "FAQ",      to: "/faq" },
+  { label: "Kontak",   to: "/kontak" },
 ];
 
 export default function Navbar() {
@@ -32,7 +35,7 @@ export default function Navbar() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5">
+          <Link to="/" className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-amber-500 rounded-xl flex items-center justify-center shadow-sm">
               <span className="text-stone-900 font-heading font-extrabold text-xs">SW</span>
             </div>
@@ -40,22 +43,26 @@ export default function Navbar() {
               <p className="font-heading font-bold text-stone-900 text-sm">Sahabat Wisata</p>
               <p className="font-sans text-stone-400 text-xs">Jember</p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href}
-                className="font-sans font-medium text-sm text-stone-600 hover:text-amber-500 transition-colors duration-200 relative after:absolute after:bottom-[-3px] after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-amber-500 after:transition-all after:duration-200">
+              <NavLink key={link.to} to={link.to}
+                className={({ isActive }) =>
+                  `font-sans font-medium text-sm transition-colors duration-200 relative after:absolute after:bottom-[-3px] after:left-0 after:h-0.5 after:bg-amber-500 after:transition-all after:duration-200 ${
+                    isActive ? "text-amber-600 after:w-full" : "text-stone-600 hover:text-amber-500 after:w-0 hover:after:w-full"
+                  }`
+                }>
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </div>
 
           {/* Desktop CTA */}
           <a href={waUrl} target="_blank" rel="noopener noreferrer"
             data-testid="navbar-wa-btn"
-            className="hidden md:flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium font-sans transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+            className="hidden lg:flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium font-sans transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
             <Phone size={14} />
             Hubungi WA
           </a>
@@ -63,7 +70,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button onClick={() => setMenuOpen(!menuOpen)}
             data-testid="mobile-menu-btn"
-            className="md:hidden p-2 text-stone-600 rounded-lg hover:bg-stone-100 transition-colors">
+            className="lg:hidden p-2 text-stone-600 rounded-lg hover:bg-stone-100 transition-colors">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -71,14 +78,16 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-stone-100 px-4 pb-4">
+        <div className="lg:hidden bg-white border-t border-stone-100 px-4 pb-4 max-h-[80vh] overflow-y-auto">
           <div className="flex flex-col gap-0.5 pt-2">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href}
+              <NavLink key={link.to} to={link.to}
                 onClick={() => setMenuOpen(false)}
-                className="block py-2.5 px-3 rounded-xl text-stone-700 hover:bg-stone-50 hover:text-amber-600 font-medium text-sm transition-colors">
+                className={({ isActive }) =>
+                  `block py-2.5 px-3 rounded-xl font-medium text-sm transition-colors ${isActive ? "bg-amber-50 text-amber-700" : "text-stone-700 hover:bg-stone-50 hover:text-amber-600"}`
+                }>
                 {link.label}
-              </a>
+              </NavLink>
             ))}
             <a href={waUrl} target="_blank" rel="noopener noreferrer"
               data-testid="navbar-mobile-cta-wa"

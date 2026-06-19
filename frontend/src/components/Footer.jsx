@@ -1,19 +1,22 @@
 import { MapPin, Phone, Mail, Share2 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 import { siteConfig } from "../data/siteConfig";
 
 const footerLinks = {
   layanan: [
-    { label: "Travel Reguler", href: "#rute" },
-    { label: "Paket Wisata", href: "#wisata" },
-    { label: "Sewa Armada", href: "#armada" },
-    { label: "Rombongan", href: "#layanan" },
+    { label: "Travel Reguler", to: "/travel" },
+    { label: "Paket Wisata", to: "/wisata" },
+    { label: "Sewa Armada", to: "/sewa-armada" },
+    { label: "Rombongan", to: "/rombongan" },
+    { label: "FAQ", to: "/faq" },
+    { label: "Kontak", to: "/kontak" },
   ],
   rute: [
-    { label: "Jember – Surabaya", href: "#" },
-    { label: "Jember – Malang", href: "#" },
-    { label: "Jember – Bali", href: "#" },
-    { label: "Jember – Juanda", href: "#" },
+    { label: "Jember – Surabaya", to: "/travel/jember-surabaya" },
+    { label: "Jember – Malang", to: "/travel/jember-malang" },
+    { label: "Jember – Bali", to: "/travel/jember-denpasar" },
+    { label: "Jember – Juanda", to: "/travel/jember-juanda" },
   ],
 };
 
@@ -63,9 +66,9 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.layanan.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="font-sans text-sm hover:text-amber-400 transition-colors duration-200">
+                  <Link to={link.to} className="font-sans text-sm hover:text-amber-400 transition-colors duration-200">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -77,9 +80,9 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.rute.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="font-sans text-sm hover:text-amber-400 transition-colors duration-200">
+                  <Link to={link.to} className="font-sans text-sm hover:text-amber-400 transition-colors duration-200">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

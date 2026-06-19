@@ -1,4 +1,5 @@
 import { Calendar, Users, CheckCircle, X, MessageCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { tourPackages } from "../data/tourPackages";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 
@@ -91,17 +92,23 @@ export default function ToursSection() {
                     </p>
                   </div>
 
-                  {/* CTA */}
-                  <a
-                    href={buildWhatsAppUrl(waMsg)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-testid={`tour-wa-${pkg.slug}`}
-                    className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-medium font-sans text-sm transition-all duration-200 hover:-translate-y-0.5"
-                  >
-                    <MessageCircle size={15} />
-                    Tanya Paket via WhatsApp
-                  </a>
+                  {/* CTAs */}
+                  <div className="flex gap-2">
+                    <a
+                      href={buildWhatsAppUrl(waMsg)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid={`tour-wa-${pkg.slug}`}
+                      className="flex-1 flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-medium font-sans text-sm transition-all duration-200 hover:-translate-y-0.5"
+                    >
+                      <MessageCircle size={15} />Tanya WA
+                    </a>
+                    <Link to={`/wisata/${pkg.slug}`}
+                      data-testid={`tour-detail-${pkg.slug}`}
+                      className="px-3 py-3 border border-stone-200 hover:bg-stone-50 rounded-xl text-stone-600 transition-colors">
+                      <ArrowRight size={15} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

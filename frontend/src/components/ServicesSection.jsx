@@ -1,39 +1,12 @@
 import { Bus, Mountain, Car, Users, ArrowRight, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 
 const services = [
-  {
-    icon: Bus,
-    title: "Travel Reguler",
-    desc: "Door-to-door antar kota setiap hari. Jember ke Surabaya, Malang, Bali, dan kota lainnya.",
-    href: "#rute",
-    color: "bg-blue-50 text-blue-600",
-    ctaMsg: "Halo, saya ingin tanya tentang layanan Travel Reguler. Bisa bantu saya?",
-  },
-  {
-    icon: Mountain,
-    title: "Paket Wisata",
-    desc: "Open trip & private trip ke Bromo, Ijen, Papuma, dan destinasi pilihan lainnya.",
-    href: "#wisata",
-    color: "bg-green-50 text-green-600",
-    ctaMsg: "Halo, saya ingin tanya tentang Paket Wisata. Bisa bantu saya?",
-  },
-  {
-    icon: Car,
-    title: "Sewa Armada",
-    desc: "Rental kendaraan dengan driver berpengalaman. Hiace, Innova, Avanza, dan lainnya.",
-    href: "#armada",
-    color: "bg-amber-50 text-amber-600",
-    ctaMsg: "Halo, saya ingin tanya tentang Sewa Armada. Bisa bantu saya?",
-  },
-  {
-    icon: Users,
-    title: "Rombongan",
-    desc: "Perjalanan grup, study tour, family gathering, dan event perusahaan. Harga spesial.",
-    href: "#rombongan",
-    color: "bg-purple-50 text-purple-600",
-    ctaMsg: "Halo, saya ingin tanya tentang layanan Rombongan. Bisa bantu saya?",
-  },
+  { icon: Bus, title: "Travel Reguler", desc: "Door-to-door antar kota setiap hari. Jember ke Surabaya, Malang, Bali, dan kota lainnya.", to: "/travel", color: "bg-blue-50 text-blue-600", ctaMsg: "Halo, saya ingin tanya tentang layanan Travel Reguler." },
+  { icon: Mountain, title: "Paket Wisata", desc: "Open trip & private trip ke Bromo, Ijen, Papuma, dan destinasi pilihan lainnya.", to: "/wisata", color: "bg-green-50 text-green-600", ctaMsg: "Halo, saya ingin tanya tentang Paket Wisata." },
+  { icon: Car, title: "Sewa Armada", desc: "Rental kendaraan dengan driver berpengalaman. Hiace, Innova, Avanza, dan lainnya.", to: "/sewa-armada", color: "bg-amber-50 text-amber-600", ctaMsg: "Halo, saya ingin tanya tentang Sewa Armada." },
+  { icon: Users, title: "Rombongan", desc: "Perjalanan grup, study tour, family gathering, dan event perusahaan. Harga spesial.", to: "/rombongan", color: "bg-purple-50 text-purple-600", ctaMsg: "Halo, saya ingin tanya tentang layanan Rombongan." },
 ];
 
 export default function ServicesSection() {
@@ -65,12 +38,12 @@ export default function ServicesSection() {
               </div>
               <h3 className="font-heading font-semibold text-stone-900 text-lg mb-2">{svc.title}</h3>
               <p className="font-sans text-stone-500 text-sm leading-relaxed mb-4">{svc.desc}</p>
-              <a
-                href={svc.href}
+              <Link
+                to={svc.to}
                 className="inline-flex items-center gap-1.5 text-amber-600 hover:text-amber-700 text-sm font-medium font-sans group-hover:gap-2.5 transition-all duration-200"
               >
                 Lihat Detail <ArrowRight size={14} />
-              </a>
+              </Link>
               <a
                 href={buildWhatsAppUrl(svc.ctaMsg)}
                 target="_blank"

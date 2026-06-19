@@ -1,4 +1,5 @@
 import { Clock, MapPin, ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import { travelRoutes } from "../data/travelRoutes";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 
@@ -93,12 +94,14 @@ export default function RoutesSection() {
                     <MessageCircle size={14} />
                     Pesan via WA
                   </a>
-                  <button
+                  <Link
+                    to={`/travel/${route.slug}`}
+                    data-testid={`route-detail-${route.slug}`}
                     className="px-3 py-2.5 border border-stone-200 rounded-xl text-stone-600 hover:bg-stone-50 transition-colors"
                     title="Lihat Detail"
                   >
                     <ArrowRight size={15} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );

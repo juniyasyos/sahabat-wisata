@@ -1,0 +1,32 @@
+export const testimonials = [
+  {
+    id: 1,
+    name: "Budi Santoso",
+    origin: "Jember",
+    route: "Jember – Surabaya",
+    rating: 5,
+    text: "Sudah 3 kali pakai Sahabat Wisata buat travel ke Surabaya. Driver selalu tepat waktu jemput di rumah, mobilnya bersih. Harga juga transparan, tidak ada biaya tersembunyi. Recommended!",
+    avatar: "B",
+    color: "bg-amber-500",
+  },
+  {
+    id: 2,
+    name: "Siti Rahayu",
+    origin: "Jember",
+    route: "Open Trip Bromo",
+    rating: 5,
+    text: "Open trip Bromo-nya luar biasa! Guidenya ramah dan informatif, jeep-nya nyaman, semua fasilitas sudah tersedia. Sunrise Bromo yang kita lihat beneran bikin speechless. Pasti balik lagi!",
+    avatar: "S",
+    color: "bg-teal-500",
+  },
+  {
+    id: 3,
+    name: "Ahmad Fauzi",
+    origin: "Jember",
+    route: "Sewa Hiace – Acara Kantor",
+    rating: 5,
+    text: "Kami sewa Hiace untuk gathering kantor ke Malang. Pelayanannya profesional, driver baik dan sabar. Mobil bersih dan AC dingin. Harga kompetitif dan admin responsif. Terima kasih!",
+    avatar: "A",
+    color: "bg-blue-500",
+  },
+];
