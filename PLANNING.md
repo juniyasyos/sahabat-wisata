@@ -24,7 +24,7 @@ Website ini **bukan booking engine**, melainkan sebuah **lead generation website
   - [6.2 Out of Scope & Alasannya](#62-out-of-scope--alasannya)
 - [7. Struktur URL](#7-struktur-url)
   - [7.1 Public Pages](#71-public-pages)
-  - [7.2 Admin Pages](#72-admin-pages)
+  - [7.2 Pengelolaan Data](#72-pengelolaan-data-v100)
 - [8. Struktur Halaman & Rasionalisasi per Section](#8-struktur-halaman--rasionalisasi-per-section)
   - [8.1 Homepage `/`](#81-homepage-)
   - [8.2 Katalog Travel `/travel`](#82-katalog-travel-travel)
@@ -42,9 +42,9 @@ Website ini **bukan booking engine**, melainkan sebuah **lead generation website
   - [9.6 `posts`](#96-posts)
   - [9.7 `faqs`](#97-faqs)
   - [9.8 `settings`](#98-settings)
-- [10. CMS Admin Scope](#10-cms-admin-scope)
-  - [10.1 Resource Minimum MVP](#101-resource-minimum-mvp)
-  - [10.2 Field Behavior](#102-field-behavior)
+- [10. Pengelolaan Data](#10-pengelolaan-data-v100)
+  - [10.1 File Data](#101-file-data)
+  - [10.2 Aturan Pengelolaan Data](#102-aturan-pengelolaan-data)
 - [11. WhatsApp CTA — Mesin Konversi Utama](#11-whatsapp-cta--mesin-konversi-utama)
   - [11.1 Template Travel Reguler](#111-template-travel-reguler)
   - [11.2 Template Paket Wisata](#112-template-paket-wisata)
@@ -57,13 +57,9 @@ Website ini **bukan booking engine**, melainkan sebuah **lead generation website
   - [12.4 Generative Engine Optimization (GEO)](#124-generative-engine-optimization-geo)
 - [13. Performance Requirements](#13-performance-requirements)
 - [14. Tech Stack](#14-tech-stack)
-  - [14.1 Opsi A — Laravel + Filament + Blade](#141-opsi-a--laravel--filament--blade)
-  - [14.2 Opsi B — React Static/SPA + Headless CMS](#142-opsi-b--react-staticspa--headless-cms)
-  - [14.3 Rekomendasi Teknis](#143-rekomendasi-teknis)
 - [15. MVP Version 1.0](#15-mvp-version-10)
   - [15.1 Public Page MVP](#151-public-page-mvp)
-  - [15.2 Admin MVP](#152-admin-mvp)
-  - [15.3 Data Awal MVP](#153-data-awal-mvp)
+  - [15.2 Pengelolaan Data v1.0.0](#152-pengelolaan-data-v100)
 - [16. Prioritas Pengembangan](#16-prioritas-pengembangan)
   - [Phase 1 — Foundation](#phase-1--foundation)
   - [Phase 2 — Public Website](#phase-2--public-website)
@@ -301,19 +297,22 @@ Struktur URL dirancang bukan hanya untuk navigasi, tetapi juga sebagai **strateg
 | Tentang Kami   | `/tentang-kami`       | Membangun kepercayaan (E-E-A-T)                                   |
 | Kontak         | `/kontak`             | Informasi kontak; sinyal `LocalBusiness` untuk SEO lokal          |
 
-### 7.2 Admin Pages (Filament)
+### 7.2 Pengelolaan Data (v1.0.0)
 
-| Modul              | Resource              |
-| ------------------ | --------------------- |
-| Destinasi          | `DestinationResource` |
-| Rute Travel        | `TravelRouteResource` |
-| Jadwal             | `ScheduleResource`    |
-| Paket Wisata       | `TourPackageResource` |
-| Armada             | `FleetResource`       |
-| Artikel            | `PostResource`        |
-| FAQ                | `FaqResource`         |
-| Halaman Statis     | `PageResource`        |
-| Pengaturan Website | `SettingResource`     |
+Pada v1.0.0, **tidak ada panel admin**. Semua data dikelola langsung dengan mengedit file JSON di folder `data/` dalam repositori, lalu deploy ulang ke Vercel/Netlify.
+
+| File                      | Isi                                        |
+| ------------------------- | ------------------------------------------ |
+| `data/destinations.json`  | Array destinasi (kota, bandara, wisata)    |
+| `data/travel_routes.json` | Array rute travel (termasuk schedules)     |
+| `data/tour_packages.json` | Array paket wisata                         |
+| `data/fleets.json`        | Array armada kendaraan                     |
+| `data/faqs.json`          | Array FAQ (semua scope dalam satu file)    |
+| `data/site_config.json`   | Object konfigurasi global (WA, SEO, dll)   |
+
+> **Implikasi:** Perubahan konten (harga, jadwal, nomor WA) memerlukan edit file dan deploy ulang. Ini acceptable untuk v1.0.0 — konten tidak berubah terlalu sering.
+>
+> CMS/Admin panel direncanakan untuk **v2.0** setelah website terbukti menghasilkan leads.
 
 ---
 
@@ -336,10 +335,10 @@ Bagian ini menjelaskan **apa yang ada di setiap halaman** dan yang lebih penting
 Konten:
 - **Headline:** Satu kalimat yang menjelaskan bisnis ini. Contoh: *"Layanan Travel Sahabat Wisata Jember — Reguler, Wisata, dan Sewa Armada."*
 - **Subheadline:** Satu baris yang memperkuat nilai utama. Contoh: *"Jemput dari rumah, antar ke tujuan, jadwal fleksibel."*
-- **CTA Utama → WhatsApp:** Tombol primer yang langsung menghubungkan ke admin. Berwarna kontras, teks jelas, posisi di atas fold.
-- **CTA Sekunder → Katalog Layanan:** Tombol sekunder bagi pengguna yang ingin *lihat dulu* sebelum menghubungi.
+- **Search Box dengan 4 Tab:** Form interaktif untuk konversi cepat (Tab: Travel, Wisata, Armada, Rombongan).
+  - *Sesuai dengan spesifikasi detail di `03_HERO_SECTION.md`.*
 
-> **Mengapa ada dua CTA:** Pengguna yang datang dari iklan atau rekomendasi langsung mungkin sudah siap konversi — mereka butuh tombol WhatsApp yang cepat. Pengguna yang baru tahu dan masih ragu butuh jalur eksplorasi. Dua CTA melayani dua jenis niat (*intent*) ini tanpa memaksa.
+> **Mengapa ada form interaktif di hero:** Pengguna bisa langsung memasukkan tujuan atau kebutuhan mereka dan diarahkan ke WhatsApp yang relevan dengan data yang sudah terisi. Ini mengurangi gesekan (friction) secara dramatis.
 
 #### Section 2: Layanan Utama
 
@@ -551,13 +550,13 @@ Master kota, wilayah, atau destinasi. Digunakan sebagai referensi oleh `travel_r
 
 | Field         | Type    | Required | Notes                                           |
 | ------------- | ------- | -------- | ----------------------------------------------- |
-| `id`          | bigint  | yes      | Primary key                                     |
-| `name`        | varchar | yes      | Nama kota/destinasi                             |
-| `slug`        | varchar | yes      | Unique                                          |
+| `id`          | string  | yes      | Primary key (slug)                              |
+| `name`        | string  | yes      | Nama kota/destinasi                             |
+| `slug`        | string  | yes      | Unique                                          |
 | `type`        | enum    | yes      | `city`, `tourism`, `airport`, `station`, `area` |
-| `province`    | varchar | no       | Provinsi                                        |
+| `province`    | string  | no       | Provinsi                                        |
 | `description` | text    | no       | Deskripsi SEO                                   |
-| `is_active`   | boolean | yes      | Default true                                    |
+| `isActive`    | boolean | yes      | Default true                                    |
 
 **Index:** `unique(slug)`, `index(type)`, `index(is_active)`
 
@@ -569,24 +568,24 @@ Rute travel reguler. Setiap baris adalah satu halaman landing page SEO.
 
 | Field                   | Type    | Required | Notes                          |
 | ----------------------- | ------- | -------- | ------------------------------ |
-| `id`                    | bigint  | yes      | Primary key                    |
-| `origin_id`             | bigint  | yes      | FK destinations                |
-| `destination_id`        | bigint  | yes      | FK destinations                |
-| `name`                  | varchar | yes      | Contoh: Travel Sahabat Wisata Jember Surabaya |
-| `slug`                  | varchar | yes      | Unique — digunakan di URL      |
-| `base_price`            | decimal | no       | Harga mulai dari               |
-| `estimated_duration`    | varchar | no       | Contoh: 5–7 jam                |
-| `estimated_distance_km` | integer | no       | Jika tersedia                  |
-| `short_description`     | varchar | no       | Ringkasan untuk kartu katalog  |
+| `id`                    | string  | yes      | Primary key (slug)             |
+| `originId`              | string  | yes      | FK destinations                |
+| `destinationId`         | string  | yes      | FK destinations                |
+| `name`                  | string  | yes      | Contoh: Travel Sahabat Wisata Jember Surabaya |
+| `slug`                  | string  | yes      | Unique — digunakan di URL      |
+| `basePrice`             | decimal | no       | Harga mulai dari               |
+| `estimatedDuration`     | string  | no       | Contoh: 5–7 jam                |
+| `estimatedDistanceKm`   | integer | no       | Jika tersedia                  |
+| `shortDescription`      | string  | no       | Ringkasan untuk kartu katalog  |
 | `description`           | text    | no       | Konten detail halaman          |
-| `pickup_area`           | json    | no       | Daftar area jemput             |
-| `dropoff_area`          | json    | no       | Daftar area antar              |
+| `pickupArea`            | json    | no       | Daftar area jemput             |
+| `dropoffArea`           | json    | no       | Daftar area antar              |
 | `facilities`            | json    | no       | Fasilitas armada               |
 | `terms`                 | text    | no       | Ketentuan booking              |
-| `meta_title`            | varchar | no       | Override SEO title             |
-| `meta_description`      | varchar | no       | Override SEO description       |
-| `is_featured`           | boolean | yes      | Default false — untuk homepage |
-| `is_active`             | boolean | yes      | Default true                   |
+| `metaTitle`             | string  | no       | Override SEO title             |
+| `metaDescription`       | string  | no       | Override SEO description       |
+| `isFeatured`            | boolean | yes      | Default false — untuk homepage |
+| `isActive`              | boolean | yes      | Default true                   |
 
 **Index:** `unique(slug)`, `index(origin_id)`, `index(destination_id)`, `index(is_active)`, `index(is_featured)`
 
@@ -598,13 +597,13 @@ Jadwal keberangkatan per rute. Dipisah dari `travel_routes` agar satu rute bisa 
 
 | Field             | Type    | Required | Notes                            |
 | ----------------- | ------- | -------- | -------------------------------- |
-| `id`              | bigint  | yes      | Primary key                      |
-| `travel_route_id` | bigint  | yes      | FK travel_routes                 |
-| `label`           | varchar | no       | Contoh: Pagi, Siang, Malam       |
-| `departure_time`  | time    | no       | Jam keberangkatan                |
-| `description`     | varchar | no       | Catatan atau keterangan jadwal   |
-| `is_active`       | boolean | yes      | Default true                     |
-| `sort_order`      | integer | yes      | Urutan tampil                    |
+| `id`              | string  | yes      | Primary key                      |
+| `travelRouteId`   | string  | yes      | FK travel_routes                 |
+| `label`           | string  | no       | Contoh: Pagi, Siang, Malam       |
+| `departureTime`   | string  | no       | Jam keberangkatan                |
+| `description`     | string  | no       | Catatan atau keterangan jadwal   |
+| `isActive`        | boolean | yes      | Default true                     |
+| `sortOrder`       | integer | yes      | Urutan tampil                    |
 
 > **Catatan penting:** Jika jadwal belum tetap, gunakan field `description` dengan isi seperti *"Jadwal menyesuaikan ketersediaan"*. **Jangan membuat jam palsu** hanya untuk mengisi halaman — ini menurunkan kepercayaan jika tidak sesuai dengan kondisi nyata.
 
@@ -616,23 +615,23 @@ Paket wisata. Setiap baris adalah satu halaman landing page wisata.
 
 | Field                 | Type    | Required | Notes                           |
 | --------------------- | ------- | -------- | ------------------------------- |
-| `id`                  | bigint  | yes      | Primary key                     |
-| `name`                | varchar | yes      | Nama paket                      |
-| `slug`                | varchar | yes      | Unique                          |
-| `base_price`          | decimal | no       | Harga mulai dari                |
-| `min_pax`             | integer | no       | Minimal peserta                 |
-| `duration`            | varchar | no       | Contoh: 1 hari, 2D1N            |
-| `main_destination_id` | bigint  | no       | FK destinations                 |
-| `short_description`   | varchar | no       | Ringkasan kartu katalog         |
+| `id`                  | string  | yes      | Primary key (slug)              |
+| `name`                | string  | yes      | Nama paket                      |
+| `slug`                | string  | yes      | Unique                          |
+| `basePrice`           | decimal | no       | Harga mulai dari                |
+| `minPax`              | integer | no       | Minimal peserta                 |
+| `duration`            | string  | no       | Contoh: 1 hari, 2D1N            |
+| `mainDestinationId`   | string  | no       | FK destinations                 |
+| `shortDescription`    | string  | no       | Ringkasan kartu katalog         |
 | `description`         | text    | no       | Konten detail halaman           |
 | `itinerary`           | json    | no       | Array rundown kegiatan          |
 | `includes`            | json    | no       | Array item yang termasuk        |
 | `excludes`            | json    | no       | Array item yang tidak termasuk  |
 | `terms`               | text    | no       | Ketentuan paket                 |
-| `meta_title`          | varchar | no       | Override SEO title              |
-| `meta_description`    | varchar | no       | Override SEO description        |
-| `is_featured`         | boolean | yes      | Default false — untuk homepage  |
-| `is_active`           | boolean | yes      | Default true                    |
+| `metaTitle`           | string  | no       | Override SEO title              |
+| `metaDescription`     | string  | no       | Override SEO description        |
+| `isFeatured`          | boolean | yes      | Default false — untuk homepage  |
+| `isActive`            | boolean | yes      | Default true                    |
 
 ---
 
@@ -642,19 +641,20 @@ Data armada kendaraan.
 
 | Field              | Type    | Required | Notes                          |
 | ------------------ | ------- | -------- | ------------------------------ |
-| `id`               | bigint  | yes      | Primary key                    |
-| `name`             | varchar | yes      | Nama armada                    |
-| `slug`             | varchar | yes      | Unique                         |
-| `vehicle_type`     | varchar | no       | Hiace, Elf, Bus, Mobil         |
+| `id`               | string  | yes      | Primary key (slug)             |
+| `name`             | string  | yes      | Nama armada                    |
+| `slug`             | string  | yes      | Unique                         |
+| `vehicleType`      | string  | no       | Hiace, Elf, Bus, Mobil         |
 | `capacity`         | integer | no       | Jumlah seat                    |
 | `description`      | text    | no       | Detail armada                  |
 | `features`         | json    | no       | Fasilitas (AC, reclining, dll) |
+| `suitableFor`      | json    | no       | Array. Contoh: ["Wisata"]      |
 | `images`           | json    | no       | Array URL foto                 |
 | `terms`            | text    | no       | Ketentuan sewa                 |
-| `meta_title`       | varchar | no       | Override SEO title             |
-| `meta_description` | varchar | no       | Override SEO description       |
-| `is_featured`      | boolean | yes      | Default false                  |
-| `is_active`        | boolean | yes      | Default true                   |
+| `metaTitle`        | string  | no       | Override SEO title             |
+| `metaDescription`  | string  | no       | Override SEO description       |
+| `isFeatured`       | boolean | yes      | Default false                  |
+| `isActive`         | boolean | yes      | Default true                   |
 
 ---
 
@@ -664,15 +664,15 @@ Artikel SEO. Digunakan untuk blog dan konten edukasi jangka panjang.
 
 | Field              | Type     | Required | Notes                |
 | ------------------ | -------- | -------- | -------------------- |
-| `id`               | bigint   | yes      | Primary key          |
-| `title`            | varchar  | yes      | Judul artikel        |
-| `slug`             | varchar  | yes      | Unique               |
-| `excerpt`          | varchar  | no       | Ringkasan singkat    |
-| `content`          | longtext | yes      | Isi artikel          |
+| `id`               | string   | yes      | Primary key (slug)   |
+| `title`            | string   | yes      | Judul artikel        |
+| `slug`             | string   | yes      | Unique               |
+| `excerpt`          | string   | no       | Ringkasan singkat    |
+| `content`          | text     | yes      | Isi artikel          |
 | `status`           | enum     | yes      | `draft`, `published` |
-| `published_at`     | datetime | no       | Tanggal publikasi    |
-| `meta_title`       | varchar  | no       | Override SEO title   |
-| `meta_description` | varchar  | no       | Override SEO desc    |
+| `publishedAt`      | datetime | no       | Tanggal publikasi    |
+| `metaTitle`        | string   | no       | Override SEO title   |
+| `metaDescription`  | string   | no       | Override SEO desc    |
 
 ---
 
@@ -682,73 +682,70 @@ FAQ yang bisa digunakan secara polimorfik — untuk global, per rute, per paket 
 
 | Field          | Type    | Required | Notes                              |
 | -------------- | ------- | -------- | ---------------------------------- |
-| `id`           | bigint  | yes      | Primary key                        |
-| `question`     | varchar | yes      | Pertanyaan                         |
+| `id`           | string  | yes      | Primary key                        |
+| `question`     | string  | yes      | Pertanyaan                         |
 | `answer`       | text    | yes      | Jawaban                            |
-| `faqable_type` | varchar | no       | Polymorphic: `TravelRoute`, dll    |
-| `faqable_id`   | bigint  | no       | Polymorphic ID                     |
-| `is_active`    | boolean | yes      | Default true                       |
-| `sort_order`   | integer | yes      | Urutan tampil                      |
+| `scope`        | string  | yes      | global, travel, tour, homepage     |
+| `scopeId`      | string  | no       | TravelRoute.id, TourPackage.id     |
+| `isActive`     | boolean | yes      | Default true                       |
+| `sortOrder`    | integer | yes      | Urutan tampil                      |
 
-Relasi polimorfik memungkinkan satu tabel FAQ melayani: FAQ global (halaman `/faq`), FAQ spesifik rute, FAQ paket wisata, dan FAQ armada — tanpa duplikasi tabel.
-
----
-
-### 9.8 `settings`
-
-Pengaturan global website yang bisa diubah dari admin panel tanpa menyentuh kode.
-
-| Field   | Type      | Required | Notes                         |
-| ------- | --------- | -------- | ----------------------------- |
-| `id`    | bigint    | yes      | Primary key                   |
-| `key`   | varchar   | yes      | Unique                        |
-| `value` | json/text | no       | Nilai setting                 |
-| `group` | varchar   | no       | General, SEO, Contact, Social |
-
-Contoh key yang wajib ada:
-- `site_name`, `site_tagline`
-- `whatsapp_number` — digunakan oleh semua CTA di seluruh website
-- `contact_email`, `office_address`
-- `instagram_url`, `facebook_url`
-- `default_meta_title`, `default_meta_description`
+Dengan field `scope` dan `scopeId`, FAQ bisa melayani berbagai konteks: global (halaman `/faq`), homepage, per rute, per paket, atau per armada.
 
 ---
 
-## 10. Pengelolaan Data (Firebase)
+### 9.8 `siteConfig`
 
-Karena v1.0.0 tidak menggunakan CMS terpisah, semua data dikelola langsung melalui **Firebase Console** atau script seed. Admin yang perlu mengubah data (rute, harga, jadwal, nomor WA) melakukannya langsung di Firestore Console.
+Pengaturan global website.
 
-### 10.1 Koleksi Firestore
+| Field | Type | Required | Notes |
+| ----- | ---- | -------- | ----- |
+| `siteName` | string | yes | |
+| `siteTagline` | string | yes | |
+| `whatsappNumber` | string | yes | Format internasional: 628... |
+| `contactEmail` | string | no | |
+| `officeAddress` | string | no | |
+| `instagramUrl` | string | no | |
+| `facebookUrl` | string | no | |
+| `defaultMetaTitle` | string | yes | |
+| `defaultMetaDescription`| string | yes | |
 
-| Koleksi          | Isi                                       |
-| ---------------- | ----------------------------------------- |
-| `destinations`   | Master kota, bandara, destinasi wisata    |
-| `travel_routes`  | Rute travel + sub-koleksi `schedules`     |
-| `tour_packages`  | Paket wisata                              |
-| `fleets`         | Armada kendaraan                          |
-| `faqs`           | FAQ global dan per entitas                |
-| `posts`          | Artikel blog/SEO                          |
-| `config/site`    | Konfigurasi global (nomor WA, SEO, dll)   |
+---
+
+## 10. Pengelolaan Data (v1.0.0)
+
+Semua data dikelola langsung melalui file JSON di folder `data/` dalam repositori. Untuk mengubah data (rute, harga, jadwal, nomor WA), developer mengedit file JSON yang sesuai, commit, lalu deploy ulang ke Vercel/Netlify.
+
+### 10.1 File Data
+
+| File                      | Isi                                        |
+| ------------------------- | ------------------------------------------ |
+| `data/destinations.json`  | Array destinasi (kota, bandara, wisata)    |
+| `data/travel_routes.json` | Array rute travel (termasuk schedules)     |
+| `data/tour_packages.json` | Array paket wisata                         |
+| `data/fleets.json`        | Array armada kendaraan                     |
+| `data/faqs.json`          | Array FAQ (semua scope dalam satu file)    |
+| `data/site_config.json`   | Object konfigurasi global (WA, SEO, dll)   |
 
 ### 10.2 Aturan Pengelolaan Data
 
 **Slug:**
-- Ditentukan saat pertama kali dokumen dibuat.
-- Digunakan sebagai Document ID di Firestore.
+- Ditentukan saat pertama kali data dibuat.
+- Digunakan sebagai `id` item dalam array JSON dan bagian dari URL halaman.
 - *Jangan ubah slug setelah halaman sudah live dan diindex Google* — URL akan berubah dan merusak SEO.
 
 **Status:**
 - `isActive: true/false` untuk layanan (travel, wisata, armada).
-- `status: "draft" | "published"` untuk artikel blog.
+- Item dengan `isActive: false` tidak ditampilkan di halaman publik.
 
 **SEO:**
 - Field `meta.title` kosong → fallback ke `name` entitas.
 - Field `meta.description` kosong → fallback ke `shortDescription`.
 
 **Foto/Aset:**
-- Semua gambar disimpan di **Firebase Storage**.
-- URL Firebase Storage disimpan di field `images[]` dokumen Firestore.
-- Jangan menyimpan gambar base64 langsung di Firestore.
+- Semua gambar disimpan di folder `public/images/` dalam repositori.
+- Path gambar disimpan di field `images[]` sebagai path relatif. Contoh: `"/images/armada/hiace-eksterior.jpg"`.
+- Optimalkan gambar ke format WebP sebelum dimasukkan ke repositori.
 
 ---
 
@@ -983,7 +980,7 @@ Performance bukan hanya soal kecepatan teknis — ini langsung memengaruhi konve
 | SEO metadata       | Wajib per halaman        |
 | Sitemap            | Wajib, otomatis          |
 | WhatsApp CTA       | Wajib, selalu visible    |
-| Firebase Firestore | Wajib sebagai database   |
+| Data lokal (JSON)  | Wajib — diload saat build |
 
 ---
 
@@ -1021,6 +1018,8 @@ Definisi selesai (*Done*) untuk versi 1.0.0 adalah **sebuah website statis yang 
 3. Katalog Wisata & Detail Paket.
 4. Katalog Armada & Detail Armada.
 5. FAQ global.
+6. Halaman Kontak.
+7. Halaman Rombongan / Custom Trip.
 
 **Ditiadakan di v1.0.0 (Ditunda ke versi berikutnya):**
 - Blog/Artikel (fokus jualan dulu, SEO konten menyusul).
@@ -1029,8 +1028,8 @@ Definisi selesai (*Done*) untuk versi 1.0.0 adalah **sebuah website statis yang 
 - Halaman Testimoni khusus (cukup gabungkan di Homepage).
 
 ### 15.2 Pengelolaan Data v1.0.0
-Tidak ada dashboard admin. Data diedit langsung melalui file `data/*.ts` atau `data/*.json` di dalam repositori kode.
-Semua data diisi dengan **dummy data yang masuk akal** terlebih dahulu untuk keperluan *development* dan *review* desain, lalu diganti dengan data asli sebelum di-*deploy* ke publik.
+
+Tidak ada dashboard admin. Data diedit langsung melalui file `data/*.json` di dalam repositori kode. Semua file data sudah ada di folder `data/` dan berisi dummy data untuk keperluan *development*. Sebelum deploy ke publik, dummy data diganti dengan data asli yang sudah divalidasi bersama owner (lihat §19 — Data Validation Checklist).
 
 ---
 
@@ -1073,20 +1072,18 @@ Semua data diisi dengan **dummy data yang masuk akal** terlebih dahulu untuk kep
 
 Website dianggap selesai dan siap produksi jika **semua** kriteria berikut terpenuhi:
 
-1. Admin bisa login ke CMS dengan akun yang aman.
-2. Admin bisa menambah, mengubah, dan menonaktifkan rute travel.
-3. Admin bisa menambah, mengubah, dan menonaktifkan paket wisata.
-4. Admin bisa menambah, mengubah, dan menonaktifkan armada.
-5. Admin bisa mengubah nomor WhatsApp tanpa menyentuh kode.
-6. Halaman publik hanya menampilkan data dengan `is_active = true`.
-7. Setiap halaman detail layanan memiliki CTA WhatsApp yang berfungsi.
-8. Link WhatsApp membuka chat dengan pesan yang sudah terisi sesuai layanan.
-9. Semua halaman utama responsive di mobile (layar 375px ke atas).
-10. Setiap halaman detail memiliki meta title dan meta description.
-11. Sitemap tersedia dan bisa diakses di `/sitemap.xml`.
-12. **Tidak ada data palsu** di halaman publik — tidak ada harga fiktif, jam palsu, atau testimoni yang tidak valid.
-13. Jika data kosong, halaman menampilkan fallback yang aman (bukan error atau halaman kosong).
-14. Website dapat diakses tanpa login oleh publik.
+1. Semua file `data/*.json` sudah diisi data asli yang divalidasi bersama owner — tidak ada dummy data.
+2. Halaman publik hanya menampilkan data dengan `isActive: true`.
+3. Setiap halaman detail layanan memiliki CTA WhatsApp yang berfungsi.
+4. Link WhatsApp membuka chat dengan pesan yang sudah terisi sesuai layanan.
+5. Semua halaman utama responsive di mobile (layar 375px ke atas).
+6. Setiap halaman detail memiliki meta title dan meta description.
+7. Sitemap tersedia dan bisa diakses di `/sitemap.xml`.
+8. **Tidak ada data palsu** di halaman publik — tidak ada harga fiktif, jam palsu, atau testimoni yang tidak valid.
+9. Jika data kosong, halaman menampilkan fallback yang aman (bukan error atau halaman kosong).
+10. Website dapat diakses tanpa login oleh publik.
+11. Link WhatsApp telah diuji — pesan terbuka dengan benar di aplikasi WhatsApp.
+12. Data kontak (nomor WA, alamat) telah diverifikasi aktif dan benar.
 
 ---
 

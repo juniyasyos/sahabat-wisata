@@ -185,21 +185,9 @@ Untuk menang dari pemain lama yang sudah mapan, kita tidak bisa melawannya denga
 
 ## 10. Prioritas Eksekusi
 
-### P0 (Wajib Ada di Peluncuran Bulan Pertama)
-- Homepage Premium dengan LocalBusiness Schema.
-- Halaman Rute: Jember-Surabaya, Jember-Juanda, Jember-Malang.
-- Halaman Layanan Sewa: Sewa Hiace Jember.
-- Integrasi tombol WhatsApp *Dynamic Field*.
-- Halaman Kontak (Embed Maps).
-
-### P1 (Fokus Bulan ke-2 - Konversi Wisata & Rombongan)
-- Halaman Paket Wisata Utama: Bromo dari Jember, City Tour Jember.
-- Halaman `/rombongan` (Landing page khusus Study Tour / Outing instansi).
-- Artikel FAQ spesifik (contoh: "Perbedaan Hiace Commuter dan Premio").
-
-### P2 (Fokus Lanjutan - SEO Jangka Panjang)
-- Rute travel sekunder: Jember-Banyuwangi, Jember-Bali.
-- Artikel blog panduan liburan di Jember.
+> **Catatan:** Prioritas eksekusi, timeline, dan spesifikasi halaman MVP telah disinkronisasi dan dipindahkan secara komprehensif ke dokumen utama arsitektur. 
+> 
+> Silakan rujuk **`PLANNING.md` §15 (MVP Version 1.0)** dan **§16 (Prioritas Pengembangan)** sebagai sumber kebenaran tunggal (Single Source of Truth) untuk scope peluncuran.
 
 ## 11. Kesimpulan
 Kompetitor lama seperti *Lintas Nusa* dan *Mita Travel* memang **menguasai halaman pertama Google karena umur domain dan banyaknya halaman artikel SEO**. Namun, **mereka lemah dalam UX, penempatan harga yang bertele-tele, serta minimnya kustomisasi CTA WhatsApp** per layanan.

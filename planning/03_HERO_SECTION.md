@@ -206,9 +206,9 @@ Jika tiga pertanyaan itu tidak terjawab dalam 5 detik → pengunjung pergi.
 │  H1: Jelajahi Destinasi Wisata                              │
 │      Bersama Sahabat Wisata Jember                          │
 │                                                             │
-│  Bromo • Ijen • Papuma • Bali & lebih banyak lagi          │
+│  Bromo • Ijen • Papuma • Bali & lebih banyak lagi           │
 │                                                             │
-│  [✨ Lihat Semua Paket]                                     │
+│  [✨ Lihat Semua Paket]                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 

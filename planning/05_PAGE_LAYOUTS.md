@@ -18,7 +18,8 @@
 [HERO — Full viewport height]
 │  Background foto penuh
 │  Overlay gelap
-│  Headline + Sub + 2 CTA buttons
+│  Headline + Subheadline
+│  Search Box (4 Tab: Travel, Wisata, Armada, Rombongan)
 │  4 Quick-Access Cards (di bawah, floating)
 │
 [TRUST BAR — Tipis, background amber-50]
@@ -56,7 +57,7 @@
 
 | # | Section | Background | Layout |
 |---|---------|-----------|--------|
-| 1 | Hero | Foto + overlay | Full-width, 100svh |
+| 1 | Hero | Foto + overlay | Full-width, 100svh. Ada Search Box Form |
 | 2 | Trust Bar | Amber-50 | Flex row |
 | 3 | Layanan | White | 2x2 grid (mobile) / 4 col (desktop) |
 | 4 | Rute Populer | Neutral-50 | 3 col grid |

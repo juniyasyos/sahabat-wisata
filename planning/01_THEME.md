@@ -83,6 +83,8 @@ Hangat → Terpercaya → Mudah → Siap Pesan
 - ❌ **Warna terlalu banyak** — Maksimal 3 warna utama + neutrals
 - ❌ **Font terlalu banyak** — Maksimal 2 font family
 - ❌ **Stock photo yang terlalu "international"** — Hindari foto bule di pantai tropis generik
+- ❌ **Dark mode sebagai default keseluruhan** — Target pengguna lebih familiar dengan light mode (Background putih/terang). 
+  - *Pengecualian:* Overlay gelap (`rgba(28,25,23,0.5)` - `0.8`) di atas foto Hero Section diperbolehkan dan diwajibkan agar teks putih (Navbar & Hero Headline) terbaca jelas (kontras).
 - ❌ **Animasi berlebihan** — Animasi harus subtle, tidak mengganggu konten
 - ❌ **Teks yang terlalu panjang di atas fold** — Headline singkat, sub-headline pendek
 - ❌ **Tombol yang membingungkan** — Satu halaman satu CTA utama yang dominan

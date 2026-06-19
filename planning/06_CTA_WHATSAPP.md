@@ -25,7 +25,7 @@ Icon: WhatsApp SVG (putih)
 Shadow: shadow-lg
 Z-index: 9999
 
-Animasi: Pulse ring setiap 4 detik
+Animasi: Pulse ring setiap 3 detik
   ─ Ring pertama: scale(1.4), opacity 0.3
   ─ Ring kedua: scale(1.8), opacity 0
   ─ Durasi: 1.5s, ease-out

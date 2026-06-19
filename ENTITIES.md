@@ -31,13 +31,13 @@ Dokumen ini mendefinisikan semua entitas data yang digunakan pada website Travel
 
 Master kota, wilayah, bandara, atau destinasi wisata. Digunakan sebagai referensi oleh `TravelRoute` dan `TourPackage`.
 
-**Koleksi Firestore:** `destinations`
+**File:** `data/destinations.json`
 
-**Document ID:** slug kota. Contoh: `jember`, `surabaya`, `juanda`
+**Format:** Array of `Destination`. Setiap item diidentifikasi oleh field `id` (= nilai slug).
 
 ```ts
 type Destination = {
-  id: string             // = Document ID Firestore
+  id: string             // slug kota. Contoh: "jember", "juanda"
   name: string           // Nama tampilan. Contoh: "Jember", "Bandara Juanda"
   slug: string           // Untuk URL. Contoh: "jember", "juanda"
   type: DestinationType
@@ -53,25 +53,28 @@ type DestinationType =
   | "area"      // Area/kawasan umum
 ```
 
-**Contoh dokumen Firestore:**
+**Contoh data JSON:**
 
 ```json
-// destinations/jember
-{
-  "name": "Jember",
-  "slug": "jember",
-  "type": "city",
-  "province": "Jawa Timur"
-}
-
-// destinations/juanda
-{
-  "name": "Bandara Juanda",
-  "slug": "juanda",
-  "type": "airport",
-  "province": "Jawa Timur",
-  "description": "Bandara internasional di Sidoarjo yang melayani penerbangan dari/ke Surabaya."
-}
+// data/destinations.json (sebagian)
+// CONTOH TEKNIS — JANGAN DIGUNAKAN SEBAGAI DATA PRODUKSI
+[
+  {
+    "id": "jember",
+    "name": "Jember",
+    "slug": "jember",
+    "type": "city",
+    "province": "Jawa Timur"
+  },
+  {
+    "id": "juanda",
+    "name": "Bandara Juanda",
+    "slug": "juanda",
+    "type": "airport",
+    "province": "Jawa Timur",
+    "description": "Bandara internasional di Sidoarjo yang melayani penerbangan dari/ke Surabaya."
+  }
+]
 ```
 
 ---
@@ -119,9 +122,9 @@ type CoveragePoint = {
 
 Paket wisata. Setiap dokumen adalah satu halaman di `/wisata/{slug}`.
 
-**Koleksi Firestore:** `tour_packages`
+**File:** `data/tour_packages.json`
 
-**Document ID:** slug paket. Contoh: `bromo-midnight-sunrise`
+**Format:** Array of `TourPackage`. Setiap item diidentifikasi oleh field `id` (= slug paket).
 
 ```ts
 type TourPackage = {
@@ -139,12 +142,10 @@ type TourPackage = {
   includes: IncludeExcludeItem[]     // Array inline
   excludes: IncludeExcludeItem[]     // Array inline
   terms: string                      // Ketentuan: DP, pembatalan, reschedule
-  images: string[]                   // URL Firebase Storage
+  images: string[]                   // Path lokal. Contoh: "/images/wisata/bromo-sunrise.jpg"
   isFeatured: boolean
   isActive: boolean
   meta: PageMeta
-  createdAt: Timestamp
-  updatedAt: Timestamp
 }
 ```
 
@@ -167,10 +168,11 @@ type IncludeExcludeItem = {
 }
 ```
 
-**Contoh dokumen Firestore:**
+**Contoh data JSON:**
 
 ```json
-// tour_packages/bromo-midnight-sunrise
+// data/tour_packages.json (salah satu item dalam array)
+// CONTOH TEKNIS — JANGAN DIGUNAKAN SEBAGAI DATA PRODUKSI
 {
   "name": "Bromo Midnight Sunrise",
   "slug": "bromo-midnight-sunrise",
@@ -200,7 +202,7 @@ type IncludeExcludeItem = {
   ],
   "terms": "Minimal 4 orang. DP 50% saat konfirmasi booking. Pembatalan H-3 DP dikembalikan penuh.",
   "images": [
-    "https://storage.googleapis.com/project.appspot.com/wisata/bromo-sunrise.jpg"
+    "/images/wisata/bromo-sunrise.jpg"
   ],
   "isFeatured": true,
   "isActive": true,
@@ -217,9 +219,9 @@ type IncludeExcludeItem = {
 
 Armada kendaraan untuk disewa. Setiap dokumen adalah satu halaman di `/sewa-armada/{slug}`.
 
-**Koleksi Firestore:** `fleets`
+**File:** `data/fleets.json`
 
-**Document ID:** slug armada. Contoh: `hiace-commuter`, `elf-long`
+**Format:** Array of `Fleet`. Setiap item diidentifikasi oleh field `id` (= slug armada).
 
 ```ts
 type Fleet = {
@@ -234,13 +236,11 @@ type Fleet = {
   suitableFor: string[]           // Contoh: ["Wisata keluarga", "Korporat"]
   includes: IncludeExcludeItem[]  // Contoh: Driver, BBM
   excludes: IncludeExcludeItem[]  // Contoh: Tol, Parkir
-  images: string[]                // URL Firebase Storage (minimal: eksterior + interior)
+  images: string[]                // Path lokal (min: eksterior + interior). Contoh: "/images/armada/hiace-eksterior.jpg"
   terms: string                   // Ketentuan sewa
   isFeatured: boolean
   isActive: boolean
   meta: PageMeta
-  createdAt: Timestamp
-  updatedAt: Timestamp
 }
 
 type VehicleType =
@@ -258,7 +258,9 @@ type VehicleType =
 
 Pertanyaan & jawaban. Satu koleksi digunakan untuk semua konteks (global dan per entitas).
 
-**Koleksi Firestore:** `faqs`
+**File:** `data/faqs.json`
+
+**Format:** Array of `Faq`. Satu file menampung semua FAQ dari semua scope.
 
 ```ts
 type Faq = {
@@ -266,13 +268,14 @@ type Faq = {
   question: string
   answer: string              // Boleh mengandung HTML sederhana (<b>, <a>, dll)
   scope: FaqScope
-  scopeId: string | null      // null jika scope = "global" atau "travel" atau "tour"
+  scopeId: string | null      // null jika scope = "global" | "travel" | "tour"
   sortOrder: number
   isActive: boolean
 }
 
 type FaqScope =
   | "global"        // Halaman /faq
+  | "homepage"      // Khusus untuk di-pin di homepage
   | "travel"        // Halaman /travel (katalog semua rute)
   | "travel_route"  // Halaman /travel/{slug}. scopeId = TravelRoute.id
   | "tour"          // Halaman /wisata (katalog semua paket)
@@ -280,25 +283,21 @@ type FaqScope =
   | "fleet"         // Halaman /sewa-armada/{slug}. scopeId = Fleet.id
 ```
 
-**Query contoh (untuk halaman detail rute):**
+**Contoh penggunaan di komponen (filter dari JSON lokal):**
 
-```js
-// Ambil FAQ global + FAQ spesifik rute ini
-const faqsRef = collection(db, "faqs")
+```ts
+// src/lib/faqs.ts
+import allFaqs from '@/data/faqs.json'
 
-const [globalFaqs, routeFaqs] = await Promise.all([
-  getDocs(query(faqsRef,
-    where("scope", "==", "travel"),
-    where("isActive", "==", true),
-    orderBy("sortOrder")
-  )),
-  getDocs(query(faqsRef,
-    where("scope", "==", "travel_route"),
-    where("scopeId", "==", routeId),
-    where("isActive", "==", true),
-    orderBy("sortOrder")
-  ))
-])
+// Ambil FAQ untuk halaman detail rute
+export function getFaqsForRoute(routeId: string) {
+  return allFaqs
+    .filter(f =>
+      (f.scope === 'travel' || (f.scope === 'travel_route' && f.scopeId === routeId))
+      && f.isActive
+    )
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+}
 ```
 
 ---
@@ -307,9 +306,9 @@ const [globalFaqs, routeFaqs] = await Promise.all([
 
 Artikel blog/edukasi untuk SEO konten jangka panjang.
 
-**Koleksi Firestore:** `posts`
+> **Catatan v1.0.0:** Entitas `Post` (Blog/Artikel) **tidak diimplementasi di v1.0.0**. Blog ditunda ke versi berikutnya setelah bisnis tervalidasi. Definisi tipe di bawah ini untuk referensi v2.0.
 
-**Document ID:** slug artikel. Contoh: `tips-naik-travel-antar-kota`
+**File (v2.0):** `data/posts.json`
 
 ```ts
 type Post = {
@@ -318,32 +317,23 @@ type Post = {
   slug: string
   excerpt: string             // 1–2 kalimat untuk kartu blog dan meta description
   content: string             // Isi artikel (HTML atau Markdown)
-  publishedAt: Timestamp | null // null = draft
+  publishedAt: string | null  // ISO date string. null = draft
   status: "draft" | "published"
   tags: string[]              // Contoh: ["travel", "tips", "wisata"]
-  coverImage: string | null   // URL Firebase Storage
+  coverImage: string | null   // Path lokal. Contoh: "/images/blog/cover.jpg"
   meta: PageMeta
-  createdAt: Timestamp
-  updatedAt: Timestamp
 }
-```
-
-**Index Firestore yang diperlukan:**
-
-```
-posts: status ASC, publishedAt DESC   → untuk halaman /blog (list artikel)
-posts: tags ARRAY_CONTAINS, status    → untuk filter berdasarkan tag
 ```
 
 ---
 
 ## 7. SiteConfig
 
-Konfigurasi global website. Disimpan sebagai **satu dokumen tunggal** di Firestore.
+Konfigurasi global website. Disimpan sebagai **satu objek tunggal** dalam file JSON.
 
-**Koleksi Firestore:** `config`
+**File:** `data/site_config.json`
 
-**Document ID:** `site`
+**Format:** Object tunggal (bukan array).
 
 ```ts
 type SiteConfig = {
@@ -365,19 +355,15 @@ type SiteConfig = {
   // SEO Default (fallback untuk halaman tanpa meta sendiri)
   defaultMetaTitle: string
   defaultMetaDescription: string
-  defaultOgImage: string    // URL Firebase Storage
-
-  updatedAt: Timestamp
+  defaultOgImage: string    // Path lokal. Contoh: "/images/og-default.jpg"
 }
 ```
 
 **Cara membaca di aplikasi:**
 
-```js
-import { doc, getDoc } from "firebase/firestore"
-
-const configSnap = await getDoc(doc(db, "config", "site"))
-const siteConfig = configSnap.data()
+```ts
+import siteConfig from '@/data/site_config.json'
+// siteConfig.whatsappNumber, siteConfig.siteName, dst.
 ```
 
 ---
@@ -398,51 +384,23 @@ type PageMeta = {
 
 ---
 
-## 9. Struktur Koleksi Firestore
+## 9. Struktur File Data (v1.0.0)
+
+Semua data disimpan sebagai file JSON statis di dalam folder `data/` di root project.
 
 ```
-firestore/
-│
-├── config/
-│   └── site                        ← SiteConfig (dokumen tunggal)
-│
-├── destinations/
-│   ├── jember
-│   ├── surabaya
-│   ├── juanda
-│   └── bromo
-│
-├── travel_routes/
-│   ├── jember-surabaya
-│   │   └── schedules/              ← Sub-koleksi RouteSchedule
-│   │       ├── pagi
-│   │       ├── siang
-│   │       └── malam
-│   ├── jember-malang
-│   │   └── schedules/
-│   └── jember-juanda
-│       └── schedules/
-│
-├── tour_packages/
-│   ├── bromo-midnight-sunrise
-│   ├── kawah-ijen-full-day
-│   └── papuma-day-trip
-│
-├── fleets/
-│   ├── hiace-commuter
-│   ├── elf-long
-│   └── avanza
-│
-├── faqs/
-│   ├── faq-global-001
-│   ├── faq-global-002
-│   ├── faq-route-jember-surabaya-001
-│   └── faq-tour-bromo-001
-│
-└── posts/
-    ├── tips-naik-travel-antar-kota
-    └── destinasi-wisata-dekat-jember
+data/
+├── destinations.json       ← Array of Destination
+├── travel_routes.json      ← Array of TravelRoute (schedules[] inline)
+├── tour_packages.json      ← Array of TourPackage (itinerary, includes, excludes inline)
+├── fleets.json             ← Array of Fleet
+├── faqs.json               ← Array of Faq (semua scope dalam satu file)
+└── site_config.json        ← Object SiteConfig tunggal
 ```
+
+> **Catatan:** Pada v1.0.0, jadwal rute (`schedules`) disimpan **inline** di dalam objek `TravelRoute` sebagai field `schedules: string[]`, bukan sebagai sub-koleksi terpisah. Ini menyederhanakan struktur tanpa memerlukan join/relasi.
+
+> **Untuk v2.0 (dengan database):** Struktur Firestore dan migration guide akan didefinisikan di dokumen roadmap v2.0.
 
 ---
 
@@ -470,69 +428,17 @@ faqs/{id}
   → scopeId?          referensi ke TravelRoute.id | TourPackage.id | Fleet.id
 ```
 
-> **Catatan desain:** Firestore tidak mendukung JOIN seperti SQL. Resolusi referensi (misal: mengambil nama kota dari `originId`) dilakukan di sisi aplikasi dengan satu query tambahan, atau dengan menyimpan snapshot nama di dokumen induk (denormalisasi ringan).
+> **Catatan desain:** Karena data bersifat statis (JSON lokal), resolusi referensi (misal: mengambil nama kota dari `originId`) dilakukan di sisi aplikasi dengan `Array.find()` pada array `destinations`. Ini efisien karena data berukuran kecil dan sudah dimuat sepenuhnya saat build time.
 
 ---
 
-## 11. Aturan Firestore (Security Rules)
+## 11. Keamanan Data (v1.0.0)
 
-Aturan dasar untuk v1.0.0: **semua data publik bisa dibaca siapa saja, hanya admin terautentikasi yang bisa menulis**.
+Pada v1.0.0 yang menggunakan **static JSON lokal**, tidak diperlukan Security Rules karena tidak ada database backend. Data bersifat read-only dan sudah tertanam di build time.
 
-```js
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
+**Implikasi keamanan v1.0.0:**
+- Data publik (rute, wisata, armada, FAQ) dapat dibaca siapa saja — ini memang tujuannya.
+- Tidak ada operasi tulis dari sisi klien — semua perubahan dilakukan developer dengan mengedit file `data/*.json` dan deploy ulang.
+- Nomor WhatsApp dan informasi kontak ditampilkan secara publik — ini *by design*.
 
-    // Fungsi helper: cek apakah user sudah login
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
-    // Koleksi publik — baca bebas, tulis hanya admin
-    match /destinations/{id} {
-      allow read: if true;
-      allow write: if isAuthenticated();
-    }
-
-    match /travel_routes/{id} {
-      allow read: if true;
-      allow write: if isAuthenticated();
-
-      // Sub-koleksi jadwal
-      match /schedules/{scheduleId} {
-        allow read: if true;
-        allow write: if isAuthenticated();
-      }
-    }
-
-    match /tour_packages/{id} {
-      allow read: if true;
-      allow write: if isAuthenticated();
-    }
-
-    match /fleets/{id} {
-      allow read: if true;
-      allow write: if isAuthenticated();
-    }
-
-    match /faqs/{id} {
-      allow read: if true;
-      allow write: if isAuthenticated();
-    }
-
-    match /posts/{id} {
-      // Artikel publik hanya yang sudah published
-      allow read: if resource.data.status == "published" || isAuthenticated();
-      allow write: if isAuthenticated();
-    }
-
-    // Config global — baca bebas, tulis hanya admin
-    match /config/{id} {
-      allow read: if true;
-      allow write: if isAuthenticated();
-    }
-  }
-}
-```
-
-> **Catatan:** Untuk v1.0.0, `isAuthenticated()` sudah cukup. Jika ke depan ada role (admin, editor, dll), tambahkan pengecekan custom claims Firebase Authentication.
+> **Untuk v2.0 (dengan Firebase):** Security Rules Firestore akan ditambahkan saat migrasi ke database backend. Pola aturannya: semua koleksi bisa dibaca publik, hanya admin terautentikasi yang bisa menulis.
