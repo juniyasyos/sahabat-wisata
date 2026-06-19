@@ -1,17 +1,17 @@
 # Entity Reference — Website Travel Jember
 
-Dokumen ini mendefinisikan semua entitas data yang digunakan pada website Travel Jember. Data dikelola menggunakan **Firebase Firestore** sebagai database utama dan **Firebase Storage** untuk aset media (foto armada, wisata, dll).
+Dokumen ini mendefinisikan semua entitas data yang digunakan pada website Travel Jember. Pada **v1.0.0**, untuk menghindari over-engineering dan mempercepat rilis, **semua data di-*hardcode* sebagai statis dummy data (TypeScript/JSON file)**. Tidak ada CMS atau database backend.
 
 ---
 
-## Stack Data
+## Stack Data (v1.0.0)
 
-| Kebutuhan        | Solusi Firebase                       |
+| Kebutuhan        | Solusi MVP v1.0.0                     |
 | ---------------- | ------------------------------------- |
-| Database         | **Cloud Firestore** (NoSQL Document)  |
-| File & Foto      | **Firebase Storage**                  |
-| Auth Admin       | **Firebase Authentication**           |
-| Hosting          | **Firebase Hosting** *(opsional)*     |
+| Database         | **Lokal JSON / TypeScript Array**     |
+| File & Foto      | **Lokal Assets (public/images)**      |
+| Auth Admin       | **Tidak Ada (Hardcoded Data)**        |
+| Hosting          | Vercel / Netlify (SSG/SSR optimized)  |
 
 ---
 
@@ -19,18 +19,11 @@ Dokumen ini mendefinisikan semua entitas data yang digunakan pada website Travel
 
 - [1. Destination](#1-destination)
 - [2. TravelRoute](#2-travelroute)
-  - [2.1 RouteSchedule](#21-routeschedule)
 - [3. TourPackage](#3-tourpackage)
-  - [3.1 ItineraryItem](#31-itineraryitem)
-  - [3.2 IncludeExcludeItem](#32-includeexcludeitem)
 - [4. Fleet](#4-fleet)
 - [5. Faq](#5-faq)
-- [6. Post](#6-post)
-- [7. SiteConfig](#7-siteconfig)
-- [8. Tipe Bersama](#8-tipe-bersama)
-- [9. Struktur Koleksi Firestore](#9-struktur-koleksi-firestore)
-- [10. Relasi Antar Entitas](#10-relasi-antar-entitas)
-- [11. Aturan Firestore (Security Rules)](#11-aturan-firestore-security-rules)
+- [6. SiteConfig](#6-siteconfig)
+- [7. Struktur Folder Data](#7-struktur-folder-data)
 
 ---
 
@@ -85,76 +78,40 @@ type DestinationType =
 
 ## 2. TravelRoute
 
-Rute travel antar kota. Setiap dokumen adalah satu halaman landing page di `/travel/{slug}`.
+Rute travel antar kota. Setiap file JSON mewakili satu rute.
 
-**Koleksi Firestore:** `travel_routes`
-
-**Document ID:** slug rute. Contoh: `jember-surabaya`, `jember-juanda`
+**File:** `data/travel_routes.json`
 
 ```ts
 type TravelRoute = {
-  id: string                      // = Document ID Firestore
+  id: string                      // Contoh: "jember-surabaya"
   name: string                    // Contoh: "Travel Jember Surabaya"
   slug: string                    // Untuk URL
-  originId: string                // Referensi ke destinations/{id}
-  destinationId: string           // Referensi ke destinations/{id}
+  originId: string                // Referensi ke destinations.id
+  destinationId: string           // Referensi ke destinations.id
   basePrice: number | null        // Harga mulai dari (Rupiah). null = "Hubungi admin"
   estimatedDuration: string | null // Contoh: "5–7 jam". null = tidak ditampilkan
   estimatedDistanceKm: number | null
   shortDescription: string        // 1–2 kalimat untuk kartu katalog
   description: string             // Konten detail halaman
-  pickupArea: string[]            // Contoh: ["Jember Kota", "Ambulu", "Balung"]
-  dropoffArea: string[]           // Area antar di kota tujuan
+  pickupPoints: CoveragePoint[]   // Titik/area penjemputan di kota asal
+  dropoffPoints: CoveragePoint[]  // Titik/area pengantaran di kota tujuan
   facilities: string[]            // Contoh: ["AC", "Door-to-Door", "Bagasi"]
   terms: string                   // Ketentuan booking
+  schedules: string[]             // Contoh: ["06:00", "15:00", "21:00", "Menyesuaikan penumpang"]
   isFeatured: boolean             // Tampil di homepage?
   isActive: boolean               // Tampil di katalog?
   meta: PageMeta
-  createdAt: Timestamp            // Firestore server timestamp
-  updatedAt: Timestamp
+}
+
+type CoveragePoint = {
+  name: string           // Contoh: "Surabaya Pusat", "Bandara Juanda", "ITS"
+  description?: string   // Contoh: "Gratis penjemputan", "Termasuk area Sidoarjo"
+  additionalFee?: number // Biaya tambahan jika lokasi di luar zona utama (0 = gratis)
 }
 ```
 
-### 2.1 RouteSchedule
-
-Jadwal keberangkatan. Disimpan sebagai **sub-koleksi** dari `travel_routes`.
-
-**Sub-koleksi Firestore:** `travel_routes/{routeId}/schedules`
-
-```ts
-type RouteSchedule = {
-  id: string
-  label: string | null          // Contoh: "Pagi", "Siang", "Malam"
-  departureTime: string | null  // Format "HH:mm". null = jadwal fleksibel
-  description: string | null    // Catatan. Contoh: "Hubungi admin untuk konfirmasi"
-  sortOrder: number             // Urutan tampil (ascending)
-  isActive: boolean
-}
-```
-
-> **Aturan:** Jika jadwal belum tetap, isi `departureTime: null` dan tulis keterangan di `description`. Jangan membuat jam palsu.
-
-**Contoh dokumen:**
-
-```json
-// travel_routes/jember-surabaya/schedules/pagi
-{
-  "label": "Pagi",
-  "departureTime": "06:00",
-  "description": null,
-  "sortOrder": 1,
-  "isActive": true
-}
-
-// travel_routes/jember-surabaya/schedules/fleksibel
-{
-  "label": null,
-  "departureTime": null,
-  "description": "Jadwal menyesuaikan ketersediaan. Hubungi admin untuk konfirmasi.",
-  "sortOrder": 4,
-  "isActive": true
-}
-```
+> **Aturan Jadwal (`schedules`):** Jika jadwal belum tetap, masukkan string deskriptif seperti "Menyesuaikan ketersediaan. Hubungi admin untuk konfirmasi." Jangan membuat jam palsu.
 
 ---
 

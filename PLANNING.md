@@ -987,146 +987,73 @@ Performance bukan hanya soal kecepatan teknis — ini langsung memengaruhi konve
 
 ---
 
-## 14. Tech Stack
+## 14. Tech Stack (v1.0.0)
 
-### 14.1 Stack yang Digunakan (v1.0.0)
+Untuk menghindari *over-engineering* dan mengejar rilis MVP tercepat dengan SEO maksimal, versi 1.0.0 **tidak menggunakan database backend atau CMS**. Semua data disimpan sebagai file lokal (TypeScript/JSON).
 
 ```
-Next.js (App Router) + Tailwind CSS + Firebase (Firestore + Storage + Auth)
+Next.js (App Router) + Tailwind CSS + Local Data (JSON/TS)
 ```
 
 | Layer       | Teknologi                       | Peran                                                      |
 | ----------- | ------------------------------- | ---------------------------------------------------------- |
-| Frontend    | **Next.js** (App Router)        | UI, routing, SSG/SSR per halaman                           |
-| Styling     | **Tailwind CSS**                | Utility-first styling, responsif                           |
-| Database    | **Cloud Firestore**             | Penyimpanan data rute, wisata, armada, FAQ, artikel, config |
-| File/Media  | **Firebase Storage**            | Foto armada, destinasi wisata, OG image                    |
-| Auth        | **Firebase Authentication**     | Login admin untuk akses Firebase Console                   |
-| Hosting     | **Vercel** *(rekomendasi)*      | Deploy Next.js, CDN global, preview per branch             |
+| Frontend    | **Next.js** (App Router)        | UI, routing, Server-Side Rendering (SSR) & SSG demi SEO    |
+| Styling     | **Tailwind CSS**                | Utility-first styling, desain responsif mobile-first       |
+| Database    | **Lokal JSON / TS Arrays**      | Penyimpanan data rute, wisata, armada, FAQ secara statis   |
+| Hosting     | **Vercel** atau **Netlify**     | Deploy Next.js otomatis, CDN global                        |
 
-### 14.2 Mengapa Firebase?
-
-| Kelebihan                                              | Kekurangan                                              |
-| ------------------------------------------------------ | ------------------------------------------------------- |
-| Setup cepat — tidak perlu konfigurasi server           | Query kompleks (JOIN) tidak native → harus denormalisasi |
-| Realtime update jika suatu saat dibutuhkan             | Cost bisa meningkat seiring volume baca/tulis tinggi    |
-| Storage terintegrasi dalam satu ekosistem              | Struktur NoSQL butuh perencanaan skema yang matang      |
-| Firebase Console bisa dipakai admin untuk edit data    | Tidak ada UI admin yang user-friendly out-of-the-box    |
-| Free tier (Spark) cukup untuk MVP awal                 |                                                         |
-
-### 14.3 Mengapa Next.js?
-
-1. **SSG (Static Site Generation)** untuk halaman yang jarang berubah (rute, wisata, armada) → cepat, SEO-friendly.
-2. **SSR (Server-Side Rendering)** untuk halaman yang perlu data fresh saat diakses.
-3. **App Router** memudahkan layout bersama, loading state, dan error boundary.
-4. **Image Optimization** bawaan — otomatis konversi ke WebP dan lazy load.
-5. **Vercel** sebagai hosting memberikan deployment yang sangat mudah dan preview otomatis setiap push.
+### Mengapa Pendekatan Statis (Tanpa CMS) untuk v1.0.0?
+1. **Fokus pada Frontend & UI:** 100% waktu dialokasikan untuk memoles desain UI publik dan form WhatsApp agar konversi maksimal, bukan habis untuk mengurus sistem *login admin* dan database.
+2. **SEO Sempurna:** Data statis di-*render* secara *build-time* (SSG). Hasilnya adalah HTML murni yang loading-nya super cepat dan disukai oleh Googlebot. Tidak ada *Skeleton Loading* untuk konten utama.
+3. **Biaya Server $0:** Website statis bisa di-hosting gratis selamanya di Vercel/Netlify dengan performa CDN tingkat dunia.
+4. **Validasi Pasar:** Jika website terbukti menghasilkan *leads* WhatsApp yang banyak, baru kita bangun CMS (Panel Admin) di versi 2.0.
 
 ---
 
 ## 15. MVP Version 1.0
 
-MVP harus fokus pada halaman yang langsung mendukung traffic dan konversi. Tidak semua yang ada di scope harus selesai di versi pertama.
+Definisi selesai (*Done*) untuk versi 1.0.0 adalah **sebuah website statis yang berfungsi penuh sebagai mesin pencari leads WhatsApp**.
 
-### 15.1 Public Page MVP
+### 15.1 Scope Halaman v1.0.0
+**Wajib:**
+1. Homepage (dengan Hero Form Tabs untuk konversi langsung).
+2. Katalog Travel & Detail Rute.
+3. Katalog Wisata & Detail Paket.
+4. Katalog Armada & Detail Armada.
+5. FAQ global.
 
-**Wajib (tanpa ini website tidak siap produksi):**
-1. Homepage.
-2. Katalog travel.
-3. Detail rute travel.
-4. Katalog wisata.
-5. Detail wisata.
-6. Katalog armada.
-7. Detail armada.
-8. Halaman rombongan.
-9. Custom trip.
-10. Kontak.
-11. FAQ.
-12. Blog index + detail.
+**Ditiadakan di v1.0.0 (Ditunda ke versi berikutnya):**
+- Blog/Artikel (fokus jualan dulu, SEO konten menyusul).
+- Sistem Booking/Pembayaran Online.
+- Login Pelanggan/Admin.
+- Halaman Testimoni khusus (cukup gabungkan di Homepage).
 
-**Opsional (setelah MVP):**
-1. Galeri foto.
-2. Halaman testimoni/ulasan.
-3. Promo/penawaran khusus.
-4. Halaman karier/mitra pengemudi.
-5. Download proposal PDF.
-
----
-
-### 15.2 Pengelolaan Data MVP
-
-Pada v1.0.0, pengelolaan data dilakukan langsung melalui **Firebase Console** (Firestore UI). Tidak ada admin panel terpisah.
-
-**Data yang wajib diisi sebelum launch:**
-1. Dokumen `config/site` — nomor WhatsApp, nama brand, SEO default.
-2. Minimal 3 dokumen di `travel_routes` + jadwal masing-masing.
-3. Minimal 2 dokumen di `tour_packages`.
-4. Minimal 2 dokumen di `fleets` dengan foto di Firebase Storage.
-5. Minimal 5 dokumen di `faqs` (scope: global).
-6. Semua dokumen destinasi yang direferensikan (`destinations`).
-
----
-
-### 15.3 Data Awal MVP
-
-Data awal harus kecil tetapi **valid dan sudah diverifikasi** dengan owner.
-
-**Minimum:**
-- 3 rute travel aktif.
-- 2 paket wisata aktif.
-- 2 armada aktif.
-- 5 FAQ umum.
-- 3 artikel awal.
-- Nomor WhatsApp resmi yang aktif.
-- Alamat atau area layanan.
-- Foto armada dan destinasi yang asli.
-
-> **Aturan wajib:** Jangan menggunakan data contoh (`Lorem ipsum`, harga fiktif, jam palsu) di produksi. Data produksi harus dikonfirmasi langsung ke owner/admin travel sebelum website live.
+### 15.2 Pengelolaan Data v1.0.0
+Tidak ada dashboard admin. Data diedit langsung melalui file `data/*.ts` atau `data/*.json` di dalam repositori kode.
+Semua data diisi dengan **dummy data yang masuk akal** terlebih dahulu untuk keperluan *development* dan *review* desain, lalu diganti dengan data asli sebelum di-*deploy* ke publik.
 
 ---
 
 ## 16. Prioritas Pengembangan
 
-### Phase 1 — Foundation
+### Phase 1 — Foundation & UI Components
+1. Setup project Next.js + Tailwind CSS.
+2. Setup token warna & tipografi (mengacu ke `02_COLOR_TYPOGRAPHY.md`).
+3. Buat file dummy data (`data/routes.ts`, `data/fleets.ts`, dll).
+4. Buat UI Components dasar (Button, Card, Badge, Navbar, Footer).
 
-**Deliverable:** Database dan CMS berfungsi. Admin bisa input data.
+### Phase 2 — Halaman Publik & Konversi
+1. Bangun Homepage dengan Search Box Tab Form (`03_HERO_SECTION.md`).
+2. Bangun halaman direktori/katalog (Travel, Wisata, Armada).
+3. Bangun halaman detail masing-masing entitas (menampilkan *Coverage Point* / Area Jemput secara eksplisit).
+4. Integrasikan *script* URL Generator WhatsApp di setiap titik CTA.
 
-1. Setup project Laravel + Filament.
-2. Setup database dan jalankan migration.
-3. Buat semua model Eloquent.
-4. Buat resource CMS (CRUD) di Filament.
-5. Buat helper untuk generate link WhatsApp.
-6. Setup setting global (nomor WA, nama brand, SEO default).
-
----
-
-### Phase 2 — Public Website
-
-**Deliverable:** Website sudah bisa digunakan untuk lead generation.
-
-1. Homepage dengan semua section.
-2. Katalog travel + detail rute.
-3. Katalog wisata + detail wisata.
-4. Katalog armada + detail armada.
-5. Halaman rombongan dan custom trip.
-6. Halaman kontak.
-7. CTA WhatsApp dinamis di semua halaman.
-
----
-
-### Phase 3 — SEO
-
-**Deliverable:** Website siap diindex mesin pencari.
-
-1. Metadata per halaman (title, description, canonical, OG tags).
-2. Sitemap otomatis.
-3. Robots.txt.
-4. Structured data Schema.org.
-5. Breadcrumb navigasi.
-6. FAQ schema.
-7. Publikasi 3 artikel SEO awal.
-
----
+### Phase 3 — Optimasi & Launch
+1. Optimasi *Mobile UX* (pastikan form tidak tertutup keyboard, *touch target* cukup).
+2. Pastikan respons JS form validasi berjalan lancar.
+3. Inject meta tags SEO (Title, Description, Canonical).
+4. Ganti *dummy data* dengan data asli dari owner.
+5. Deploy ke Vercel/Netlify.
 
 ### Phase 4 — Polish
 
