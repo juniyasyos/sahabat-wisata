@@ -29,7 +29,7 @@ const features = [
 
 export default function WhyUsSection() {
   return (
-    <section id="kenapa-kami" className="py-16 sm:py-24 bg-white" data-testid="why-us-section">
+    <section id="kenapa-kami" className="py-10 sm:py-16 lg:py-24 bg-white" data-testid="why-us-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text */}
@@ -44,19 +44,19 @@ export default function WhyUsSection() {
               Di Sahabat Wisata Jember, kami percaya bahwa perjalanan yang baik bukan hanya tentang sampai di tujuan —
               tapi tentang kenyamanan, keamanan, dan kepercayaan sepanjang perjalanan.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div className="text-center">
-                <p className="font-heading font-extrabold text-3xl text-stone-900">500+</p>
+                <p className="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900">500+</p>
                 <p className="font-sans text-stone-500 text-xs">Penumpang/Bulan</p>
               </div>
-              <div className="w-px h-12 bg-stone-200" />
+              <div className="w-px h-10 sm:h-12 bg-stone-200" />
               <div className="text-center">
-                <p className="font-heading font-extrabold text-3xl text-stone-900">5+</p>
+                <p className="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900">5+</p>
                 <p className="font-sans text-stone-500 text-xs">Tahun Beroperasi</p>
               </div>
-              <div className="w-px h-12 bg-stone-200" />
+              <div className="w-px h-10 sm:h-12 bg-stone-200" />
               <div className="text-center">
-                <p className="font-heading font-extrabold text-3xl text-stone-900">4.9</p>
+                <p className="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900">4.9</p>
                 <p className="font-sans text-stone-500 text-xs">Rating Pelanggan</p>
               </div>
             </div>

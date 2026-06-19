@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Users, CheckCircle, MessageCircle, ArrowRight } from "lucide-react";
 import { fleets } from "../data/fleets";
-import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
+import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingWAButton from "../components/FloatingWAButton";
@@ -85,6 +85,18 @@ export default function ArmadaCatalogPage() {
                       </span>
                     ))}
                   </div>
+                  
+                  {/* Price */}
+                  {fleet.basePrice && (
+                    <div className="border-t border-stone-100 pt-3 mb-3">
+                      <p className="font-sans text-xs text-stone-400">Mulai dari</p>
+                      <p className="font-heading font-bold text-stone-900 text-lg">
+                        {formatPrice(fleet.basePrice)}
+                        <span className="text-xs font-normal text-stone-500"> / {fleet.priceNote || "hari"}</span>
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex gap-2">
                     <a href={buildWhatsAppUrl(WA_MESSAGES.armada(fleet.name, "", "", ""))}
                       target="_blank" rel="noopener noreferrer"

@@ -142,6 +142,43 @@ export default function ArmadaDetailPage() {
         </div>
       </div>
 
+      {/* Mobile Booking Summary */}
+      <div className="lg:hidden bg-white border-t border-stone-100">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6">
+          <div className="bg-stone-50 rounded-2xl border border-stone-200 p-5">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <p className="font-heading font-bold text-stone-900 text-xl">{fleet.name}</p>
+                <p className="font-sans text-stone-500 text-sm mt-0.5">Termasuk Driver Profesional</p>
+              </div>
+              <span className="bg-amber-100 text-amber-700 text-xs font-medium font-sans px-2.5 py-1 rounded-full">{fleet.capacity} Seat</span>
+            </div>
+            <div className="grid grid-cols-3 gap-3 mb-4 border-t border-stone-200 pt-4">
+              <div className="text-center">
+                <Users size={16} className="text-amber-500 mx-auto mb-1" />
+                <p className="font-sans text-xs text-stone-400">Kapasitas</p>
+                <p className="font-sans text-xs font-semibold text-stone-800">{fleet.capacity} Org</p>
+              </div>
+              <div className="text-center">
+                <Calendar size={16} className="text-amber-500 mx-auto mb-1" />
+                <p className="font-sans text-xs text-stone-400">Tersedia</p>
+                <p className="font-sans text-xs font-semibold text-stone-800">Setiap Hari</p>
+              </div>
+              <div className="text-center">
+                <MapPin size={16} className="text-amber-500 mx-auto mb-1" />
+                <p className="font-sans text-xs text-stone-400">Jangkauan</p>
+                <p className="font-sans text-xs font-semibold text-stone-800">Seluruh ID</p>
+              </div>
+            </div>
+            <a href={buildWhatsAppUrl(waMsg)} target="_blank" rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white py-3.5 rounded-xl font-medium font-sans text-sm transition-all duration-200">
+              <MessageCircle size={16} />Tanya Harga Sewa via WhatsApp
+            </a>
+            <p className="text-center font-sans text-xs text-stone-400 mt-2">Harga tergantung jarak, durasi &amp; ketersediaan</p>
+          </div>
+        </div>
+      </div>
+
       <CTABanner />
       <Footer />
       <FloatingWAButton />

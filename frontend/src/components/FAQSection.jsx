@@ -6,7 +6,7 @@ export default function FAQSection() {
   const [openId, setOpenId] = useState(null);
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-stone-50" data-testid="faq-section">
+    <section id="faq" className="py-10 sm:py-16 lg:py-24 bg-stone-50" data-testid="faq-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10" data-animate>
           <span className="inline-block bg-amber-100 text-amber-700 text-xs font-medium font-sans px-3 py-1 rounded-full mb-3">

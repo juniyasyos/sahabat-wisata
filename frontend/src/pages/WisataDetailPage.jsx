@@ -165,6 +165,47 @@ export default function WisataDetailPage() {
         </div>
       </div>
 
+      {/* Mobile Booking Summary */}
+      <div className="lg:hidden bg-white border-t border-stone-100">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6">
+          <div className="bg-stone-50 rounded-2xl border border-stone-200 p-5">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <p className="font-sans text-xs text-stone-400 mb-0.5">Mulai dari</p>
+                <p className="font-heading font-extrabold text-stone-900 text-2xl">
+                  {formatPrice(pkg.price)}<span className="text-sm font-normal text-stone-500"> / orang</span>
+                </p>
+              </div>
+              <span className={`text-xs font-medium font-sans px-2.5 py-1 rounded-full ${
+                pkg.type === "Open Trip" ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
+              }`}>{pkg.type}</span>
+            </div>
+            <div className="grid grid-cols-3 gap-3 mb-4 border-t border-stone-200 pt-4">
+              <div className="text-center">
+                <Calendar size={16} className="text-amber-500 mx-auto mb-1" />
+                <p className="font-sans text-xs text-stone-400">Durasi</p>
+                <p className="font-sans text-xs font-semibold text-stone-800">{pkg.duration}</p>
+              </div>
+              <div className="text-center">
+                <Users size={16} className="text-amber-500 mx-auto mb-1" />
+                <p className="font-sans text-xs text-stone-400">Min. Peserta</p>
+                <p className="font-sans text-xs font-semibold text-stone-800">{pkg.minPax} orang</p>
+              </div>
+              <div className="text-center">
+                <Clock size={16} className="text-amber-500 mx-auto mb-1" />
+                <p className="font-sans text-xs text-stone-400">Tipe</p>
+                <p className="font-sans text-xs font-semibold text-stone-800">{pkg.type}</p>
+              </div>
+            </div>
+            <a href={buildWhatsAppUrl(waMsg)} target="_blank" rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white py-3.5 rounded-xl font-medium font-sans text-sm transition-all duration-200">
+              <MessageCircle size={16} />Tanya Paket via WhatsApp
+            </a>
+            <p className="text-center font-sans text-xs text-stone-400 mt-2">Harga per orang. Hubungi admin untuk harga grup.</p>
+          </div>
+        </div>
+      </div>
+
       <CTABanner />
       <Footer />
       <FloatingWAButton />

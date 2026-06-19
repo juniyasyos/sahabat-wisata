@@ -105,6 +105,18 @@ export default function KontakPage() {
 
             {/* RIGHT: Map placeholder + Form */}
             <div>
+              <div className="w-full h-48 sm:h-64 bg-stone-200 rounded-2xl mb-8 overflow-hidden">
+                <iframe 
+                  title="Google Maps Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15797.359281519782!2d113.682669!3d-8.168537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd69435b6b1df33%3A0xc4f54ed98e6c5598!2sJember%2C%20Jember%20Regency%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
               <h2 className="font-heading font-bold text-2xl text-stone-900 mb-6">Kirim Pesan</h2>
               <KontakForm />
             </div>
@@ -123,6 +135,10 @@ function KontakForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!/^[0-9+\-\s]+$/.test(f.phone)) {
+      alert("Format nomor telepon tidak valid. Gunakan hanya angka, +, -, atau spasi.");
+      return;
+    }
     const msg = `Halo, saya ${f.name}.\n\nTopik: ${f.topic}\nNo. WA/HP: ${f.phone}\n\nPesan:\n${f.message}`;
     window.open(buildWhatsAppUrl(msg), "_blank");
   };

@@ -33,7 +33,7 @@ const steps = [
 
 export default function BookingFlowSection() {
   return (
-    <section id="cara-pesan" className="py-16 sm:py-24 bg-white" data-testid="booking-section">
+    <section id="cara-pesan" className="py-10 sm:py-16 lg:py-24 bg-white" data-testid="booking-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12" data-animate>
           <span className="inline-block bg-amber-100 text-amber-700 text-xs font-medium font-sans px-3 py-1 rounded-full mb-3">
@@ -56,8 +56,9 @@ export default function BookingFlowSection() {
               <div key={step.num} className="relative text-center group" data-animate>
                 {/* Step circle */}
                 <div className="relative z-10 inline-flex">
-                  <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-transform duration-300 group-hover:-translate-y-1 ${step.color}`}>
-                    <step.icon size={32} />
+                  <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-5 transition-transform duration-300 group-hover:-translate-y-1 ${step.color}`}>
+                    <step.icon size={24} className="sm:hidden" />
+                    <step.icon size={32} className="hidden sm:block" />
                   </div>
                   <span className="absolute -top-2 -right-2 w-6 h-6 bg-stone-900 text-white text-xs font-bold font-heading rounded-full flex items-center justify-center">
                     {idx + 1}

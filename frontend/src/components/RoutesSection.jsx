@@ -7,7 +7,7 @@ export default function RoutesSection() {
   const featured = travelRoutes.filter((r) => r.isFeatured && r.isActive);
 
   return (
-    <section id="rute" className="py-16 sm:py-24 bg-stone-50" data-testid="routes-section">
+    <section id="rute" className="py-10 sm:py-16 lg:py-24 bg-stone-50" data-testid="routes-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4" data-animate>
           <div>

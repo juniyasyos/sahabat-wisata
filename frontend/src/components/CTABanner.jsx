@@ -8,7 +8,7 @@ export default function CTABanner() {
   return (
     <section
       id="cta-banner"
-      className="py-16 sm:py-24 bg-amber-500"
+      className="py-10 sm:py-16 lg:py-24 bg-amber-500"
       data-testid="cta-section"
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -26,7 +26,7 @@ export default function CTABanner() {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="cta-banner-wa-btn"
-              className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-2xl font-medium font-sans text-base transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-medium font-sans text-sm sm:text-base transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
             >
               <MessageCircle size={20} />
               Hubungi Kami via WhatsApp
@@ -34,7 +34,7 @@ export default function CTABanner() {
             <a
               href={`tel:+${siteConfig.whatsappNumber}`}
               data-testid="cta-banner-phone-btn"
-              className="inline-flex items-center justify-center gap-2 bg-stone-900/20 hover:bg-stone-900/30 text-stone-900 border border-stone-900/20 px-8 py-4 rounded-2xl font-medium font-sans text-base transition-all duration-200 hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2 bg-stone-900/20 hover:bg-stone-900/30 text-stone-900 border border-stone-900/20 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-medium font-sans text-sm sm:text-base transition-all duration-200 hover:-translate-y-1"
             >
               <Phone size={20} />
               Telepon Langsung

@@ -7,7 +7,7 @@ export default function ToursSection() {
   const featured = tourPackages.filter((t) => t.isFeatured && t.isActive);
 
   return (
-    <section id="wisata" className="py-16 sm:py-24 bg-white" data-testid="tours-section">
+    <section id="wisata" className="py-10 sm:py-16 lg:py-24 bg-white" data-testid="tours-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4" data-animate>
           <div>

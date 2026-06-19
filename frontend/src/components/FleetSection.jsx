@@ -1,12 +1,12 @@
 import { Users, CheckCircle, MessageCircle } from "lucide-react";
 import { fleets } from "../data/fleets";
-import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
+import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 
 export default function FleetSection() {
   const featured = fleets.filter((f) => f.isActive);
 
   return (
-    <section id="armada" className="py-16 sm:py-24 bg-stone-50" data-testid="fleet-section">
+    <section id="armada" className="py-10 sm:py-16 lg:py-24 bg-stone-50" data-testid="fleet-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10" data-animate>
           <span className="inline-block bg-amber-100 text-amber-700 text-xs font-medium font-sans px-3 py-1 rounded-full mb-3">
@@ -64,6 +64,17 @@ export default function FleetSection() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Price */}
+                  {fleet.basePrice && (
+                    <div className="border-t border-stone-100 pt-3 mb-3">
+                      <p className="font-sans text-xs text-stone-400">Mulai dari</p>
+                      <p className="font-heading font-bold text-stone-900 text-lg">
+                        {formatPrice(fleet.basePrice)}
+                        <span className="text-xs font-normal text-stone-500"> / {fleet.priceNote || "hari"}</span>
+                      </p>
+                    </div>
+                  )}
 
                   <a
                     href={buildWhatsAppUrl(waMsg)}

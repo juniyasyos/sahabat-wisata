@@ -61,7 +61,7 @@ function TravelForm({ onSubmit }) {
   };
   return (
     <form onSubmit={submit} noValidate>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <Field icon={MapPin}>
           <select className={`${inputCls} pl-8`} value={f.origin}
             onChange={e => setF({...f, origin: e.target.value})} data-testid="travel-origin">
@@ -140,7 +140,7 @@ function ArmadaForm({ onSubmit }) {
   };
   return (
     <form onSubmit={submit} noValidate>
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <Field icon={Car}>
           <select className={`${inputCls} pl-8`} value={f.fleet}
             onChange={e => setF({...f, fleet: e.target.value})} data-testid="armada-fleet">
@@ -177,7 +177,7 @@ function RombonganForm({ onSubmit }) {
   };
   return (
     <form onSubmit={submit} noValidate>
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <input type="text" placeholder="Tujuan rombongan…"
           className={inputCls} value={f.destination}
           onChange={e => setF({...f, destination: e.target.value})}
@@ -214,7 +214,7 @@ function SubmitBtn({ label }) {
 /* ─── Floating Destination Card ─────────────────────────── */
 function FloatingCard() {
   return (
-    <div className="absolute bottom-6 right-4 sm:right-6 bg-white rounded-2xl shadow-2xl p-3.5 w-52 border border-stone-100"
+    <div className="absolute bottom-4 right-3 sm:bottom-6 sm:right-6 bg-white rounded-2xl shadow-2xl p-3 sm:p-3.5 w-44 sm:w-52 border border-stone-100"
       style={{ animation: "fadeInUp 0.7s ease-out 0.9s both" }}>
       <div className="flex items-center gap-3 mb-2.5">
         <img src={CARD_IMAGE} alt="Gunung Bromo"
@@ -332,7 +332,7 @@ export default function HeroSection() {
             <div className="relative w-full h-64 sm:h-80 lg:h-[520px] xl:h-[560px] rounded-3xl overflow-hidden shadow-2xl">
               <img src={HERO_IMAGE} alt="Destinasi Wisata Indonesia"
                 className="w-full h-full object-cover object-center"
-                loading="eager" fetchpriority="high" />
+                loading="eager" fetchPriority="high" />
               {/* Subtle vignette */}
               <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/5" />
             </div>
@@ -347,7 +347,7 @@ export default function HeroSection() {
 
       {/* ── BOTTOM: Search Box ── */}
       <div className="bg-stone-50 border-t border-stone-100">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6"
           data-testid="hero-search-box">
 
           {/* Tabs */}
@@ -355,7 +355,7 @@ export default function HeroSection() {
             {TABS.map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)}
                 data-testid={`tab-${tab.id}`}
-                className={`flex items-center gap-2 flex-1 min-w-[90px] py-2.5 px-4 rounded-xl text-sm font-medium font-sans transition-all duration-200 whitespace-nowrap justify-center ${
+                className={`flex items-center gap-1.5 sm:gap-2 flex-1 min-w-[72px] sm:min-w-[90px] py-2 sm:py-2.5 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-medium font-sans transition-all duration-200 whitespace-nowrap justify-center ${
                   activeTab === tab.id
                     ? "bg-amber-500 text-white shadow-sm"
                     : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"

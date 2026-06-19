@@ -138,7 +138,7 @@ export const tourPackages = [
     minPax: 6,
     shortDescription: "Pantai eksotis tersembunyi di Jember dengan bebatuan besar dan air biru jernih.",
     description: "Pantai Papuma (Tanjung Papuma) adalah permata tersembunyi Jember. Dengan bebatuan granit besar dan air laut yang biru jernih, Papuma menawarkan pemandangan yang tak kalah dengan Bali. Cocok untuk piknik keluarga.",
-    image: "https://images.pexels.com/photos/12397207/pexels-photo-12397207.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1200",
     highlights: ["Pantai Papuma", "Batu Karang Raksasa", "Air Biru Jernih", "Hutan Lindung"],
     includes: [
       "Transportasi PP dari Jember (AC)",
