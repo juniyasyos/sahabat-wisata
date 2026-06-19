@@ -33,6 +33,14 @@ Lead generation website untuk bisnis travel lokal Jember. Tujuan: mengubah penca
 
 ## What's Been Implemented
 
+### 2026-06-19 - Hero Section Redesign (v1.1.0)
+- Redesigned hero dari full-screen dark overlay ke split layout (kiri: white bg + text, kanan: vivid image)
+- Floating cards Kawah Ijen (top badge) + Gunung Bromo (bottom-right card) dengan rating & harga
+- Stats row (500+ Penumpang, 5+ Tahun, 3 Kota Tujuan Utama)
+- Search box dipindahkan ke bawah hero (full width, di background stone-50)
+- Fully responsive: mobile stacks image on top, text below
+- Navbar diupdate jadi always-solid white (cocok dengan light hero)
+
 ### 2026-06-19 - Homepage (v1.0.0)
 - **Navbar** — Transparan → solid saat scroll, mobile menu, WA CTA
 - **Hero Section** — Background image + 4-tab search box (Travel/Wisata/Armada/Rombongan)
