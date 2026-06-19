@@ -1,0 +1,164 @@
+{
+  "project_info": {
+    "name": "Travel Sahabat Wisata Jember",
+    "type": "Lead Generation Website",
+    "target_audience": "Local Jember residents seeking intercity travel and tours. 80% mobile users.",
+    "theme": "Jalan Pulang - Warm, Local, Professional",
+    "whatsapp_number": "6285732431396",
+    "tech_stack": "React.js + Tailwind CSS + Lucide React (No Next.js, no backend)"
+  },
+  "design_system": {
+    "theme_archetype": {
+      "id": "1",
+      "name": "Organic & Earthy",
+      "mode": "Light mode only",
+      "reasoning": "Fits the 'Jalan Pulang' theme. Warm, grounded, trustworthy, and local."
+    },
+    "colors": {
+      "primary": {
+        "DEFAULT": "#F59E0B",
+        "hover": "#D97706",
+        "description": "Amber/Saffron. Used for brand accents, primary non-WA buttons, highlights."
+      },
+      "whatsapp": {
+        "DEFAULT": "#10B981",
+        "hover": "#059669",
+        "description": "Teal. Exclusively used for WhatsApp CTAs to drive lead generation."
+      },
+      "background": {
+        "base": "#FAFAF9",
+        "surface": "#FFFFFF",
+        "description": "Warm White (stone-50) for base to avoid clinical stark white. White for cards."
+      },
+      "text": {
+        "heading": "#1C1917",
+        "body": "#57534E",
+        "muted": "#A8A29E"
+      },
+      "border": "#E7E5E4",
+      "neutral_family": "stone"
+    },
+    "typography": {
+      "heading_font": "Plus Jakarta Sans",
+      "body_font": "Inter",
+      "hierarchy": {
+        "h1": "font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-stone-900 leading-tight",
+        "h2": "font-heading text-2xl sm:text-3xl font-bold tracking-tight text-stone-900",
+        "h3": "font-heading text-xl sm:text-2xl font-semibold tracking-tight text-stone-800",
+        "body": "font-sans text-base text-stone-600 leading-relaxed",
+        "small": "font-sans text-sm text-stone-500"
+      }
+    },
+    "spacing_and_layout": {
+      "philosophy": "Mobile-first priority. Generous internal padding (p-6, p-8) for cards to prevent text collision. Dense data but readable.",
+      "container": "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+      "section_spacing": "py-16 sm:py-24"
+    },
+    "interactions": {
+      "card_hover": "transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
+      "button_hover": "transition-colors duration-200",
+      "whatsapp_float": "animate-[pulse_3s_ease-in-out_infinite]"
+    }
+  },
+  "media_assets": {
+    "images": {
+      "hero_background": {
+        "url": "https://images.pexels.com/photos/28386069/pexels-photo-28386069.jpeg",
+        "description": "Mount Bromo sunrise, represents local tourism and wonder.",
+        "overlay": "bg-black/40 (MUST not exceed 50% opacity)"
+      },
+      "tour_bromo": {
+        "url": "https://images.pexels.com/photos/34390984/pexels-photo-34390984.jpeg",
+        "description": "Bromo crater view"
+      },
+      "tour_ijen": {
+        "url": "https://images.pexels.com/photos/6026173/pexels-photo-6026173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Volcanic crater lake representing Ijen"
+      },
+      "fleet_hiace": {
+        "url": "https://images.unsplash.com/photo-1534011056808-50c1c6082fe7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHwzfHx0b3VyaXN0JTIwdmFuJTIwbWluaWJ1c3xlbnwwfHx8fDE3ODE4NjYwNzZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "White minibus/van representing travel fleet"
+      },
+      "family_group": {
+        "url": "https://images.pexels.com/photos/20880348/pexels-photo-20880348.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Family traveling in Indonesia"
+      }
+    },
+    "icons_library": "lucide-react"
+  },
+  "components_and_sections": [
+    {
+      "id": "navbar",
+      "name": "Transparent to Solid Navbar",
+      "requirements": "Fixed top. Transparent on initial load, transitions to solid white (bg-white shadow-sm) on scroll. Logo left, WhatsApp CTA button right. Mobile menu toggles full screen."
+    },
+    {
+      "id": "hero",
+      "name": "Hero Section & Search Box",
+      "requirements": "Full-width background image (hero_background) with bg-black/40 overlay. Headline: clear, benefit-driven. Subheadline: short. Core Feature: A white card (bg-white rounded-xl shadow-xl p-4 sm:p-6) acting as a 'Search Box'. It has 4 Tabs: Travel, Wisata, Armada, Rombongan. Each tab has a simple form (e.g., Destination, Date) that does NOT submit to a backend, but generates a pre-filled WhatsApp message URL and opens it."
+    },
+    {
+      "id": "trust_bar",
+      "name": "Trust Bar",
+      "requirements": "Horizontal strip below hero. 4 items (e.g., Berpengalaman, Armada Terawat, Driver Profesional, Harga Jujur). Use Lucide icons (ShieldCheck, Wrench, UserCheck, Banknote). Grid 2x2 on mobile, 4x1 on desktop."
+    },
+    {
+      "id": "services",
+      "name": "Layanan Kami",
+      "requirements": "4 Cards: Travel Reguler, Paket Wisata, Sewa Armada, Rombongan. White cards on stone-50 background. Card hover effect applied. Each has a 'Pesan via WA' secondary button."
+    },
+    {
+      "id": "popular_routes",
+      "name": "Rute Populer",
+      "requirements": "3 Cards (Jember-Surabaya, Jember-Malang, Jember-Bali). Show price starting from (Mulai Rp XXX.XXX). Include a Teal WA CTA on each card."
+    },
+    {
+      "id": "tours",
+      "name": "Paket Wisata Pilihan",
+      "requirements": "2-3 Cards using the tour_bromo, tour_ijen images. Show key highlights (Transport, Tiket, Guide). Primary WA CTA."
+    },
+    {
+      "id": "fleet",
+      "name": "Armada Kami",
+      "requirements": "Showcase of vehicles (Hiace, Elf, Innova). Use fleet_hiace image. List capacities (14 Seat, 19 Seat, etc)."
+    },
+    {
+      "id": "booking_flow",
+      "name": "Alur Pemesanan",
+      "requirements": "4-5 steps (Hubungi WA -> Pilih Layanan -> Konfirmasi -> Berangkat). Vertical timeline on mobile, horizontal steps on desktop."
+    },
+    {
+      "id": "faq",
+      "name": "FAQ Ringkas",
+      "requirements": "Accordion style. 4-5 common questions (Bisa jemput di rumah?, DP berapa?, dll). Use standard HTML details/summary or headless UI if preferred, styled cleanly."
+    },
+    {
+      "id": "closing_cta",
+      "name": "Closing Banner",
+      "requirements": "Amber-500 background block. Bold white text. Large Teal WhatsApp button. High contrast."
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "requirements": "4 columns on desktop, stack on mobile. Col 1: Brand & Desc, Col 2: Layanan, Col 3: Kontak (Address, WA, Email), Col 4: Social Media. Dark background (stone-900) for contrast, or light stone-100."
+    },
+    {
+      "id": "floating_wa",
+      "name": "Floating WhatsApp Button",
+      "requirements": "Fixed bottom-right. Always visible (z-50). Teal color. Uses animate-pulse every 3 seconds to draw attention without being annoying."
+    }
+  ],
+  "testing_attributes": {
+    "rule": "All interactive elements (buttons, form inputs, tabs, accordions) MUST include data-testid attribute.",
+    "convention": "kebab-case, role-based. e.g., data-testid='tab-travel', data-testid='cta-whatsapp-hero'"
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the Amber/Teal/Warm White color scheme.",
+    "Use Lucide-react for all iconography.",
+    "Do not implement an actual backend or booking engine. All forms must serialize into a WhatsApp deep link (https://wa.me/6285732431396?text=...).",
+    "Ensure perfect rendering on 360px viewport.",
+    "Do not use generic UI libraries that conflict with Tailwind without heavy customization. Raw Tailwind is preferred for marketing layouts.",
+    "Apply generous padding (p-6, p-8) inside cards.",
+    "Use 'Plus Jakarta Sans' for headings and 'Inter' for body. Import them via Google Fonts in index.css or index.html."
+  ]
+}
