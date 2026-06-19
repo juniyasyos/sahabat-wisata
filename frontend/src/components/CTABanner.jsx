@@ -9,7 +9,7 @@ export default function CTABanner() {
     <section
       id="cta-banner"
       className="py-16 sm:py-24 bg-amber-500"
-      data-testid="cta-banner"
+      data-testid="cta-section"
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div data-animate>

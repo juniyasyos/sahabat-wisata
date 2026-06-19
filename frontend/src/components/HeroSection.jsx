@@ -181,7 +181,7 @@ export default function HeroSection() {
                     data-testid="travel-destination"
                     className={`${inputClass} pl-9 ${errClass("destination")}`}
                   >
-                    <option value="">Tujuan...</option>
+                    <option value="">-- Pilih Tujuan --</option>
                     {destinations.map((d) => <option key={d}>{d}</option>)}
                   </select>
                 </FormInput>

@@ -33,7 +33,7 @@ const steps = [
 
 export default function BookingFlowSection() {
   return (
-    <section id="cara-pesan" className="py-16 sm:py-24 bg-white" data-testid="booking-flow-section">
+    <section id="cara-pesan" className="py-16 sm:py-24 bg-white" data-testid="booking-section">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12" data-animate>
           <span className="inline-block bg-amber-100 text-amber-700 text-xs font-medium font-sans px-3 py-1 rounded-full mb-3">

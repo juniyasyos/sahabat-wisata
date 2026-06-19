@@ -76,7 +76,7 @@ export default function Navbar() {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            data-testid="navbar-cta-wa"
+            data-testid="navbar-wa-btn"
             className="hidden md:flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
           >
             <Phone size={15} />
@@ -86,7 +86,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            data-testid="navbar-mobile-menu-btn"
+            data-testid="mobile-menu-btn"
             className={`md:hidden p-2 rounded-md transition-colors ${
               scrolled || menuOpen ? "text-stone-700" : "text-white"
             }`}
