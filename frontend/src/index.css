@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #FAFAF9;
+  color: #57534E;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 250ms ease-out;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+}
+
+/* Scroll animation */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-animate]:nth-child(2) { transition-delay: 80ms; }
+[data-animate]:nth-child(3) { transition-delay: 160ms; }
+[data-animate]:nth-child(4) { transition-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] { opacity: 1; transform: none; transition: none; }
+}

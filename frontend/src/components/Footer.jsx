@@ -1,0 +1,128 @@
+import { MapPin, Phone, Mail, Share2 } from "lucide-react";
+import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
+import { siteConfig } from "../data/siteConfig";
+
+const footerLinks = {
+  layanan: [
+    { label: "Travel Reguler", href: "#rute" },
+    { label: "Paket Wisata", href: "#wisata" },
+    { label: "Sewa Armada", href: "#armada" },
+    { label: "Rombongan", href: "#layanan" },
+  ],
+  rute: [
+    { label: "Jember – Surabaya", href: "#" },
+    { label: "Jember – Malang", href: "#" },
+    { label: "Jember – Bali", href: "#" },
+    { label: "Jember – Juanda", href: "#" },
+  ],
+};
+
+export default function Footer() {
+  const waUrl = buildWhatsAppUrl(WA_MESSAGES.general);
+
+  return (
+    <footer className="bg-stone-900 text-stone-400" data-testid="footer">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+                <span className="text-stone-900 font-bold text-sm font-heading">SW</span>
+              </div>
+              <span className="font-heading font-bold text-white text-base">Sahabat Wisata Jember</span>
+            </div>
+            <p className="font-sans text-sm leading-relaxed mb-4">
+              Layanan travel antar kota, paket wisata, dan sewa armada dari Jember yang terpercaya.
+            </p>
+            <div className="flex gap-3">
+              <a
+                href={siteConfig.socialMedia.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-stone-800 hover:bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+                data-testid="footer-instagram-link"
+              >
+                <Share2 size={16} className="text-stone-300" />
+              </a>
+              <a
+                href={siteConfig.socialMedia.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-stone-800 hover:bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+                data-testid="footer-facebook-link"
+              >
+                <Share2 size={16} className="text-stone-300" />
+              </a>
+            </div>
+          </div>
+
+          {/* Layanan */}
+          <div>
+            <h4 className="font-heading font-semibold text-white mb-4 text-sm">Layanan</h4>
+            <ul className="space-y-2">
+              {footerLinks.layanan.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="font-sans text-sm hover:text-amber-400 transition-colors duration-200">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Rute Populer */}
+          <div>
+            <h4 className="font-heading font-semibold text-white mb-4 text-sm">Rute Populer</h4>
+            <ul className="space-y-2">
+              {footerLinks.rute.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="font-sans text-sm hover:text-amber-400 transition-colors duration-200">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Kontak */}
+          <div>
+            <h4 className="font-heading font-semibold text-white mb-4 text-sm">Kontak</h4>
+            <ul className="space-y-3">
+              <li className="flex gap-2.5">
+                <MapPin size={15} className="flex-shrink-0 mt-0.5 text-amber-400" />
+                <span className="font-sans text-sm">{siteConfig.address}</span>
+              </li>
+              <li>
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-2.5 hover:text-teal-400 transition-colors"
+                  data-testid="footer-wa-link"
+                >
+                  <Phone size={15} className="flex-shrink-0 mt-0.5 text-teal-400" />
+                  <span className="font-sans text-sm">+62 857-3243-1396</span>
+                </a>
+              </li>
+              <li className="flex gap-2.5">
+                <Mail size={15} className="flex-shrink-0 mt-0.5 text-stone-400" />
+                <span className="font-sans text-sm">{siteConfig.contactEmail}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-stone-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="font-sans text-xs text-stone-500">
+            © {new Date().getFullYear()} Sahabat Wisata Jember. All rights reserved.
+          </p>
+          <p className="font-sans text-xs text-stone-600">
+            {siteConfig.operatingHours}
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
