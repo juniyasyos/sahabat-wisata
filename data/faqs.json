@@ -1,0 +1,34 @@
+[
+  {
+    "id": "faq-1",
+    "question": "Apakah melayani penjemputan dari rumah (Door-to-Door)?",
+    "answer": "Ya, seluruh layanan travel antar kota kami menggunakan sistem door-to-door. Kami akan menjemput Anda di rumah dan mengantar langsung sampai di alamat tujuan selama masih dalam area jangkauan wajar kota tersebut.",
+    "category": "Travel",
+    "sortOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "faq-2",
+    "question": "Bagaimana sistem pembayarannya?",
+    "answer": "Pembayaran bisa dilakukan secara cash ke driver (untuk rute tertentu) atau transfer bank ke rekening resmi kami sebelum keberangkatan. Mohon hindari transfer selain ke nomor rekening resmi yang diinfokan admin via WhatsApp.",
+    "category": "General",
+    "sortOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "faq-3",
+    "question": "Apakah saya boleh membawa hewan peliharaan?",
+    "answer": "Mohon maaf, demi kenyamanan seluruh penumpang, kami tidak mengizinkan hewan peliharaan dibawa ke dalam kabin penumpang maupun bagasi.",
+    "category": "Travel",
+    "sortOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "faq-4",
+    "question": "Apa saja yang termasuk dalam biaya sewa armada?",
+    "answer": "Harga sewa armada harian kami umumnya sudah termasuk Mobil dan Driver. Untuk biaya BBM, Tol, Parkir, dan makan driver biasanya ditanggung oleh pihak penyewa, kecuali Anda meminta paket All-In.",
+    "category": "Sewa Armada",
+    "sortOrder": 4,
+    "isActive": true
+  }
+]

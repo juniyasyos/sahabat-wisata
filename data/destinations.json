@@ -1,0 +1,37 @@
+[
+  {
+    "id": "jember",
+    "name": "Jember",
+    "type": "city",
+    "description": "Kota Jember, Jawa Timur",
+    "isActive": true
+  },
+  {
+    "id": "surabaya",
+    "name": "Surabaya",
+    "type": "city",
+    "description": "Kota Surabaya, Jawa Timur",
+    "isActive": true
+  },
+  {
+    "id": "juanda",
+    "name": "Bandara Juanda",
+    "type": "airport",
+    "description": "Bandara Internasional Juanda, Sidoarjo",
+    "isActive": true
+  },
+  {
+    "id": "malang",
+    "name": "Malang",
+    "type": "city",
+    "description": "Kota Malang, Jawa Timur",
+    "isActive": true
+  },
+  {
+    "id": "denpasar",
+    "name": "Denpasar",
+    "type": "city",
+    "description": "Kota Denpasar, Bali",
+    "isActive": true
+  }
+]

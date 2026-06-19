@@ -1,0 +1,130 @@
+[
+  {
+    "id": "jember-surabaya",
+    "name": "Travel Jember Surabaya",
+    "slug": "jember-surabaya",
+    "originId": "jember",
+    "destinationId": "surabaya",
+    "basePrice": 150000,
+    "estimatedDuration": "4-5 jam",
+    "estimatedDistanceKm": 200,
+    "shortDescription": "Travel reguler door-to-door Jember ke Surabaya keberangkatan pagi, siang, dan malam.",
+    "description": "Nikmati perjalanan yang nyaman dari Jember menuju Surabaya dengan armada unggulan kami. Layanan door-to-door memastikan Anda dijemput dari depan rumah dan diantar langsung ke lokasi tujuan.",
+    "pickupPoints": [
+      {
+        "name": "Area Kota Jember",
+        "description": "Gratis penjemputan area kota (Kaliwates, Sumbersari, Patrang)",
+        "additionalFee": 0
+      },
+      {
+        "name": "Jenggawah / Ambulu",
+        "description": "Area Jember Selatan",
+        "additionalFee": 25000
+      }
+    ],
+    "dropoffPoints": [
+      {
+        "name": "Surabaya Pusat",
+        "description": "Gratis pengantaran",
+        "additionalFee": 0
+      },
+      {
+        "name": "Bandara Juanda",
+        "description": "Pengantaran langsung ke Terminal 1 & 2",
+        "additionalFee": 20000
+      },
+      {
+        "name": "Pelabuhan Tanjung Perak",
+        "description": "Ujung utara Surabaya",
+        "additionalFee": 30000
+      }
+    ],
+    "facilities": ["AC Dingin", "Reclining Seat", "Gratis Air Mineral", "Bagasi", "Door-to-Door"],
+    "terms": "Pemesanan maksimal H-1. Pembatalan pada hari H dikenakan potongan 50%. Bagasi maksimal 1 tas besar dan 1 tas kecil.",
+    "schedules": ["06:00 WIB", "09:00 WIB", "15:00 WIB", "21:00 WIB"],
+    "isFeatured": true,
+    "isActive": true,
+    "meta": {
+      "title": "Travel Jember Surabaya - Harga Tiket & Jadwal Terbaru",
+      "description": "Pesan tiket travel Jember Surabaya murah, door-to-door, berangkat pagi siang malam.",
+      "keywords": ["travel jember surabaya", "harga travel jember", "travel door to door"]
+    }
+  },
+  {
+    "id": "jember-malang",
+    "name": "Travel Jember Malang",
+    "slug": "jember-malang",
+    "originId": "jember",
+    "destinationId": "malang",
+    "basePrice": 140000,
+    "estimatedDuration": "4-5 jam",
+    "estimatedDistanceKm": 180,
+    "shortDescription": "Perjalanan aman dan nyaman Jember - Malang PP setiap hari.",
+    "description": "Perjalanan cepat via tol Jember - Malang dengan layanan door-to-door terbaik. Cocok untuk mahasiswa maupun wisatawan.",
+    "pickupPoints": [
+      {
+        "name": "Area Kota Jember",
+        "additionalFee": 0
+      }
+    ],
+    "dropoffPoints": [
+      {
+        "name": "Area Kota Malang",
+        "additionalFee": 0
+      },
+      {
+        "name": "Batu",
+        "description": "Kawasan wisata Batu",
+        "additionalFee": 30000
+      }
+    ],
+    "facilities": ["AC Dingin", "Reclining Seat", "Gratis Air Mineral", "Door-to-Door"],
+    "terms": "Pemesanan maksimal H-1.",
+    "schedules": ["06:00 WIB", "15:00 WIB"],
+    "isFeatured": true,
+    "isActive": true,
+    "meta": {
+      "title": "Travel Jember Malang Murah & Nyaman",
+      "description": "Tiket travel Jember Malang door-to-door keberangkatan setiap hari.",
+      "keywords": ["travel jember malang"]
+    }
+  },
+  {
+    "id": "jember-denpasar",
+    "name": "Travel Jember Denpasar (Bali)",
+    "slug": "jember-denpasar",
+    "originId": "jember",
+    "destinationId": "denpasar",
+    "basePrice": 250000,
+    "estimatedDuration": "7-8 jam",
+    "estimatedDistanceKm": 280,
+    "shortDescription": "Travel eksekutif Jember - Denpasar Bali sudah termasuk tiket penyeberangan kapal ferry.",
+    "description": "Layanan travel jarak jauh Jember - Bali dengan armada yang luas. Harga sudah mencakup tiket kapal ferry penyeberangan Ketapang-Gilimanuk.",
+    "pickupPoints": [
+      {
+        "name": "Area Kota Jember",
+        "additionalFee": 0
+      }
+    ],
+    "dropoffPoints": [
+      {
+        "name": "Denpasar Kota",
+        "additionalFee": 0
+      },
+      {
+        "name": "Kuta / Legian",
+        "additionalFee": 50000
+      }
+    ],
+    "facilities": ["AC", "Tiket Kapal Ferry", "Reclining Seat", "Selimut", "Makan 1x"],
+    "terms": "Wajib membawa KTP/Identitas yang berlaku untuk penyeberangan.",
+    "schedules": ["16:00 WIB"],
+    "isFeatured": false,
+    "isActive": true,
+    "meta": {
+      "title": "Travel Jember Bali (Denpasar) Eksekutif",
+      "description": "Travel eksekutif Jember Denpasar Bali berangkat sore, sudah termasuk tiket ferry.",
+      "keywords": ["travel jember bali", "travel jember denpasar"]
+    }
+  }
+]

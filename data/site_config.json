@@ -1,0 +1,16 @@
+{
+  "id": "global",
+  "brandName": "Sahabat Wisata Jember",
+  "whatsappNumber": "6281234567890",
+  "contactEmail": "info@sahabatwisata.com",
+  "address": "Jl. Hayam Wuruk No. 123, Kaliwates, Jember",
+  "socialMedia": {
+    "instagram": "https://instagram.com/sahabatwisata",
+    "facebook": "https://facebook.com/sahabatwisata"
+  },
+  "defaultMeta": {
+    "title": "Sahabat Wisata Jember - Layanan Travel & Paket Wisata",
+    "description": "Layanan travel door-to-door, sewa armada, dan paket open trip wisata Bromo, Ijen, dan Bali berangkat dari Jember.",
+    "keywords": ["travel jember", "sewa mobil jember", "wisata bromo dari jember"]
+  }
+}

@@ -1,0 +1,71 @@
+[
+  {
+    "id": "bromo-sunrise",
+    "title": "Open Trip Bromo Sunrise",
+    "slug": "open-trip-bromo-sunrise",
+    "price": 350000,
+    "priceUnit": "per orang",
+    "durationDays": 1,
+    "durationNights": 0,
+    "shortDescription": "Nikmati keindahan golden sunrise Gunung Bromo tanpa harus repot menyetir sendiri.",
+    "description": "Paket wisata open trip Gunung Bromo keberangkatan malam hari dari Jember. Destinasi meliputi Penanjakan Sunrise, Kawah Bromo, Pasir Berbisik, dan Bukit Teletubbies.",
+    "itineraries": [
+      {
+        "dayNumber": 1,
+        "title": "Perjalanan Malam ke Bromo",
+        "activities": ["22:00 Penjemputan di area Jember kota", "23:00 Perjalanan menuju rest area Bromo"]
+      },
+      {
+        "dayNumber": 2,
+        "title": "Eksplorasi Bromo & Kembali",
+        "activities": ["03:00 Transit Jeep", "04:30 Menikmati Sunrise di Penanjakan", "06:30 Kawah Bromo & Pura Luhur Poten", "08:30 Pasir Berbisik & Savana Teletubbies", "10:00 Perjalanan kembali ke Jember", "14:00 Tiba di Jember"]
+      }
+    ],
+    "includes": [
+      { "item": "Transportasi PP Jember-Bromo (Hiace/Elf/Avanza)", "isIncluded": true },
+      { "item": "Jeep Hartop Bromo 4 Lokasi", "isIncluded": true },
+      { "item": "Tiket Masuk Taman Nasional", "isIncluded": true },
+      { "item": "Makan Besar", "isIncluded": false },
+      { "item": "Sewa Jaket / Kuda", "isIncluded": false }
+    ],
+    "isFeatured": true,
+    "isActive": true,
+    "meta": {
+      "title": "Paket Wisata Bromo Sunrise dari Jember",
+      "description": "Open Trip Bromo murah keberangkatan dari Jember setiap weekend.",
+      "keywords": ["paket wisata bromo dari jember", "open trip bromo jember"]
+    }
+  },
+  {
+    "id": "kawah-ijen",
+    "title": "Kawah Ijen Blue Fire",
+    "slug": "kawah-ijen-blue-fire",
+    "price": 250000,
+    "priceUnit": "per orang",
+    "durationDays": 1,
+    "durationNights": 0,
+    "shortDescription": "Pendakian malam melihat fenomena api biru langka di dunia.",
+    "description": "Perjalanan tengah malam menuju Kawah Ijen untuk menyaksikan fenomena alam Blue Fire yang sangat langka dan menikmati sunrise dengan pemandangan danau kawah asam berwarna tosca.",
+    "itineraries": [
+      {
+        "dayNumber": 1,
+        "title": "Perjalanan & Pendakian",
+        "activities": ["23:00 Berangkat dari Jember", "01:30 Tiba di Pos Paltuding", "02:00 Mulai pendakian", "04:00 Menyaksikan Blue Fire", "06:00 Menikmati Sunrise Kawah Ijen", "08:00 Turun kembali ke Paltuding", "12:00 Tiba kembali di Jember"]
+      }
+    ],
+    "includes": [
+      { "item": "Transportasi PP Jember-Ijen", "isIncluded": true },
+      { "item": "Tiket Masuk Wisata Kawah Ijen", "isIncluded": true },
+      { "item": "Masker Gas", "isIncluded": true },
+      { "item": "Local Guide", "isIncluded": true },
+      { "item": "Makan & Minum Pribadi", "isIncluded": false }
+    ],
+    "isFeatured": true,
+    "isActive": true,
+    "meta": {
+      "title": "Open Trip Kawah Ijen Blue Fire Jember",
+      "description": "Paket murah open trip kawah ijen berangkat dari Jember.",
+      "keywords": ["paket wisata ijen dari jember", "open trip ijen"]
+    }
+  }
+]
