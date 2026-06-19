@@ -8,6 +8,8 @@ import FloatingWAButton from "../components/FloatingWAButton";
 import Breadcrumb from "../components/Breadcrumb";
 import StickyBookingCard from "../components/StickyBookingCard";
 import CTABanner from "../components/CTABanner";
+import SEO from "../components/SEO";
+import { schemaTouristTrip, schemaBreadcrumb } from "../utils/schema";
 
 export default function WisataDetailPage() {
   const { slug } = useParams();
@@ -19,6 +21,17 @@ export default function WisataDetailPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title={`${pkg.name} dari Jember | ${pkg.type} Mulai Rp ${pkg.price.toLocaleString("id-ID")}`}
+        description={`${pkg.type} ${pkg.name} dari Jember. ${pkg.highlights.slice(0,3).join(", ")}. Sudah termasuk transport, guide, tiket. Mulai Rp ${pkg.price.toLocaleString("id-ID")}/orang.`}
+        keywords={[pkg.name.toLowerCase(), `open trip ${pkg.name.toLowerCase()}`, `wisata ${pkg.name.toLowerCase()} dari jember`, `harga ${pkg.name.toLowerCase()} jember`]}
+        url={`/wisata/${pkg.slug}`}
+        image={pkg.image}
+        schema={[
+          schemaTouristTrip(pkg),
+          schemaBreadcrumb([{ name: "Paket Wisata", url: "/wisata" }, { name: pkg.name, url: `/wisata/${pkg.slug}` }]),
+        ]}
+      />
       <Navbar />
 
       {/* Hero */}

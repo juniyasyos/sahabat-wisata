@@ -9,6 +9,8 @@ import Breadcrumb from "../components/Breadcrumb";
 import StickyBookingCard from "../components/StickyBookingCard";
 import CTABanner from "../components/CTABanner";
 import { Calendar, MapPin } from "lucide-react";
+import SEO from "../components/SEO";
+import { schemaRentalVehicle, schemaBreadcrumb } from "../utils/schema";
 
 const USES = {
   "toyota-hiace-commuter": ["Wisata rombongan keluarga", "Study tour sekolah / kampus", "Gathering kantor", "Perjalanan antar kota jauh", "Acara pernikahan"],
@@ -27,6 +29,17 @@ export default function ArmadaDetailPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title={`Sewa ${fleet.name} dengan Driver di Jember | ${fleet.capacity} Seat`}
+        description={`Sewa ${fleet.name} ${fleet.capacity} seat dengan driver berpengalaman di Jember. ${fleet.shortDescription} Hubungi admin WA untuk info harga.`}
+        keywords={[`sewa ${fleet.name.toLowerCase()} jember`, `rental ${fleet.name.toLowerCase()} jember`, `sewa ${fleet.name.toLowerCase()} driver jember`]}
+        url={`/sewa-armada/${fleet.slug}`}
+        image={fleet.image}
+        schema={[
+          schemaRentalVehicle(fleet),
+          schemaBreadcrumb([{ name: "Sewa Armada", url: "/sewa-armada" }, { name: fleet.name, url: `/sewa-armada/${fleet.slug}` }]),
+        ]}
+      />
       <Navbar />
 
       {/* Hero */}

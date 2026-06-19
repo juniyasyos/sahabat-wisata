@@ -8,6 +8,8 @@ import FloatingWAButton from "../components/FloatingWAButton";
 import Breadcrumb from "../components/Breadcrumb";
 import StickyBookingCard from "../components/StickyBookingCard";
 import CTABanner from "../components/CTABanner";
+import SEO from "../components/SEO";
+import { schemaTravelRoute, schemaBreadcrumb } from "../utils/schema";
 
 export default function TravelDetailPage() {
   const { slug } = useParams();
@@ -19,6 +21,17 @@ export default function TravelDetailPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title={`Travel ${route.origin} ${route.destination} Door-to-Door | Mulai ${formatPrice(route.basePrice)}`}
+        description={`Travel ${route.origin}–${route.destination} mulai Rp ${route.basePrice.toLocaleString("id-ID")}/orang. Door-to-door, ${route.schedules.length}x keberangkatan/hari. Armada ber-AC, driver profesional. Pesan via WA.`}
+        keywords={[`travel ${route.origin.toLowerCase()} ${route.destination.toLowerCase()}`, `jadwal travel ${route.origin.toLowerCase()}`, `harga travel ${route.destination.toLowerCase()} ${route.origin.toLowerCase()}`]}
+        url={`/travel/${route.slug}`}
+        image={route.image}
+        schema={[
+          schemaTravelRoute(route),
+          schemaBreadcrumb([{ name: "Travel Antar Kota", url: "/travel" }, { name: route.name, url: `/travel/${route.slug}` }]),
+        ]}
+      />
       <Navbar />
 
       {/* Hero */}

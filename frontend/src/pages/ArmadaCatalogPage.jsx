@@ -9,6 +9,8 @@ import PageHero from "../components/PageHero";
 import CTABanner from "../components/CTABanner";
 import FAQSection from "../components/FAQSection";
 import { MessageCircle as MC2, ClipboardList, CheckCircle2, Navigation } from "lucide-react";
+import SEO from "../components/SEO";
+import { schemaItemList, schemaBreadcrumb } from "../utils/schema";
 
 const howToSteps = [
   { icon: MC2, title: "Hubungi Admin WA", desc: "Ceritakan kebutuhan Anda: tujuan, tanggal, berapa hari, dan berapa orang." },
@@ -22,6 +24,16 @@ export default function ArmadaCatalogPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title="Sewa Armada dengan Driver di Jember | Hiace, Innova, Avanza"
+        description="Rental Hiace, Innova, Avanza dengan driver berpengalaman di Jember. Untuk wisata, perjalanan dinas, rombongan. Harga transparan. Hubungi WA."
+        keywords={["sewa hiace jember", "sewa innova jember", "sewa mobil jember", "rental mobil jember driver", "sewa armada jember", "sewa minibus jember"]}
+        url="/sewa-armada"
+        schema={[
+          schemaBreadcrumb([{ name: "Sewa Armada", url: "/sewa-armada" }]),
+          schemaItemList(activeFleets.map(f => ({ name: `Sewa ${f.name}`, url: `/sewa-armada/${f.slug}`, image: f.image, shortDescription: f.shortDescription }))),
+        ]}
+      />
       <Navbar />
       <PageHero
         title="Sewa Armada dengan Driver"

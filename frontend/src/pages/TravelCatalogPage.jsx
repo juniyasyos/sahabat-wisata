@@ -8,12 +8,24 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import FloatingWAButton from "../components/FloatingWAButton";
 import FAQSection from "../components/FAQSection";
+import SEO from "../components/SEO";
+import { schemaItemList, schemaBreadcrumb } from "../utils/schema";
 
 export default function TravelCatalogPage() {
   const routes = travelRoutes.filter(r => r.isActive);
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title="Travel Jember Antar Kota | Jadwal & Harga Terbaru"
+        description="Jadwal & harga travel Jember ke Surabaya, Malang, Bali, Juanda. Door-to-door setiap hari. Armada ber-AC, driver profesional. Pesan via WhatsApp."
+        keywords={["travel jember surabaya", "travel jember malang", "travel jember bali", "travel jember juanda", "travel antar kota jember", "jadwal travel jember"]}
+        url="/travel"
+        schema={[
+          schemaBreadcrumb([{ name: "Travel Antar Kota", url: "/travel" }]),
+          schemaItemList(routes.map(r => ({ name: r.name, url: `/travel/${r.slug}`, image: r.image, shortDescription: r.shortDescription }))),
+        ]}
+      />
       <Navbar />
       <PageHero
         title="Katalog Travel Antar Kota"

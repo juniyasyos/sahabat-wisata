@@ -8,12 +8,25 @@ import FloatingWAButton from "../components/FloatingWAButton";
 import PageHero from "../components/PageHero";
 import CTABanner from "../components/CTABanner";
 import FAQSection from "../components/FAQSection";
+import SEO from "../components/SEO";
+import { schemaItemList, schemaBreadcrumb } from "../utils/schema";
 
 export default function WisataCatalogPage() {
   const packages = tourPackages.filter(p => p.isActive);
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title="Paket Wisata dari Jember | Bromo, Ijen & Pantai Papuma"
+        description="Open trip & private trip ke Bromo, Kawah Ijen, Papuma dari Jember. Transport, guide, tiket sudah termasuk. Mulai Rp 150.000/orang. Pesan via WA."
+        keywords={["paket wisata jember", "open trip bromo jember", "wisata kawah ijen jember", "open trip ijen jember", "tour bromo dari jember", "wisata pantai papuma jember"]}
+        url="/wisata"
+        image="https://images.pexels.com/photos/28386069/pexels-photo-28386069.jpeg?w=1200"
+        schema={[
+          schemaBreadcrumb([{ name: "Paket Wisata", url: "/wisata" }]),
+          schemaItemList(packages.map(p => ({ name: p.name, url: `/wisata/${p.slug}`, image: p.image, shortDescription: p.shortDescription }))),
+        ]}
+      />
       <Navbar />
       <PageHero
         title="Paket Wisata dari Jember"

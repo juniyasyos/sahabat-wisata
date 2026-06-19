@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import FloatingWAButton from "../components/FloatingWAButton";
 import CTABanner from "../components/CTABanner";
 import PageHero from "../components/PageHero";
+import SEO from "../components/SEO";
+import { schemaLocalBusiness, schemaBreadcrumb } from "../utils/schema";
 
 const useCases = [
   { icon: Users, title: "Perjalanan Wisata Grup", desc: "Cocok untuk wisata sekolah, kampus, komunitas, atau group tour ke Bromo, Ijen, Bali, dan lainnya." },
@@ -25,6 +27,16 @@ export default function RombonganPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title="Layanan Perjalanan Rombongan dari Jember | Grup & Study Tour"
+        description="Paket perjalanan rombongan dari Jember. Study tour, wisata grup, gathering kantor, ibadah. Armada lengkap, harga kompetitif. Konsultasi gratis via WA."
+        keywords={["travel rombongan jember", "sewa bus wisata jember", "study tour jember", "wisata rombongan jember", "gathering jember", "paket rombongan jember"]}
+        url="/rombongan"
+        schema={[
+          schemaBreadcrumb([{ name: "Rombongan", url: "/rombongan" }]),
+          schemaLocalBusiness(),
+        ]}
+      />
       <Navbar />
       <PageHero
         title="Layanan Perjalanan Rombongan"

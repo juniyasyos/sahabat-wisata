@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 /* Pages */
 import HomePage from "./pages/HomePage";
@@ -44,22 +45,24 @@ function AnimationObserver() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <AnimationObserver />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/travel" element={<TravelCatalogPage />} />
-        <Route path="/travel/:slug" element={<TravelDetailPage />} />
-        <Route path="/wisata" element={<WisataCatalogPage />} />
-        <Route path="/wisata/:slug" element={<WisataDetailPage />} />
-        <Route path="/sewa-armada" element={<ArmadaCatalogPage />} />
-        <Route path="/sewa-armada/:slug" element={<ArmadaDetailPage />} />
-        <Route path="/rombongan" element={<RombonganPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/kontak" element={<KontakPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <AnimationObserver />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/travel" element={<TravelCatalogPage />} />
+          <Route path="/travel/:slug" element={<TravelDetailPage />} />
+          <Route path="/wisata" element={<WisataCatalogPage />} />
+          <Route path="/wisata/:slug" element={<WisataDetailPage />} />
+          <Route path="/sewa-armada" element={<ArmadaCatalogPage />} />
+          <Route path="/sewa-armada/:slug" element={<ArmadaDetailPage />} />
+          <Route path="/rombongan" element={<RombonganPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/kontak" element={<KontakPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

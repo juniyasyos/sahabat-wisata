@@ -6,6 +6,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingWAButton from "../components/FloatingWAButton";
 import PageHero from "../components/PageHero";
+import SEO from "../components/SEO";
+import { schemaLocalBusiness, schemaBreadcrumb } from "../utils/schema";
 
 const contactItems = [
   {
@@ -41,6 +43,16 @@ const contactItems = [
 export default function KontakPage() {
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title="Kontak Sahabat Wisata Jember | WA 0857-3243-1396"
+        description="Hubungi Sahabat Wisata Jember via WhatsApp 0857-3243-1396. Kami siap membantu setiap hari 05:00–22:00 WIB untuk travel, wisata, dan sewa armada."
+        keywords={["kontak sahabat wisata jember", "whatsapp travel jember", "telepon travel jember", "alamat travel jember"]}
+        url="/kontak"
+        schema={[
+          schemaLocalBusiness(),
+          schemaBreadcrumb([{ name: "Kontak", url: "/kontak" }]),
+        ]}
+      />
       <Navbar />
       <PageHero
         title="Hubungi Kami"

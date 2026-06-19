@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import FloatingWAButton from "../components/FloatingWAButton";
 import CTABanner from "../components/CTABanner";
 import PageHero from "../components/PageHero";
+import SEO from "../components/SEO";
+import { schemaFAQ, schemaBreadcrumb } from "../utils/schema";
 
 const CATEGORIES = [
   { id: "all", label: "Semua" },
@@ -25,6 +27,16 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen bg-stone-50">
+      <SEO
+        title="FAQ | Pertanyaan Umum tentang Layanan Sahabat Wisata Jember"
+        description="Jawaban pertanyaan umum tentang travel antar kota, paket wisata, sewa armada, pembayaran, dan pemesanan Sahabat Wisata Jember."
+        keywords={["faq travel jember", "pertanyaan travel jember", "cara pesan travel jember", "info travel jember"]}
+        url="/faq"
+        schema={[
+          schemaFAQ(faqs),
+          schemaBreadcrumb([{ name: "FAQ", url: "/faq" }]),
+        ]}
+      />
       <Navbar />
       <PageHero
         title="Pertanyaan yang Sering Ditanyakan"

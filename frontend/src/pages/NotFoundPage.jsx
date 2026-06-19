@@ -3,10 +3,16 @@ import { ArrowLeft, Home } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingWAButton from "../components/FloatingWAButton";
+import SEO from "../components/SEO";
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col">
+      <SEO
+        title="Halaman Tidak Ditemukan (404)"
+        description="Halaman yang Anda cari tidak ditemukan. Kembali ke beranda Sahabat Wisata Jember untuk layanan travel, wisata, dan sewa armada."
+        url="/404"
+      />
       <Navbar />
       <div className="flex-1 flex items-center justify-center px-4 py-20">
         <div className="text-center max-w-md">
