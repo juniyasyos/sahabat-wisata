@@ -27,12 +27,14 @@ export default function Navbar() {
   return (
     <nav
       data-testid="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        scrolled || menuOpen ? "shadow-md border-b border-stone-100" : "border-b border-stone-100"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        scrolled || menuOpen
+          ? "bg-white/75 backdrop-blur-lg shadow-sm border-b border-stone-200/50"
+          : "bg-white/95 backdrop-blur-sm border-b border-stone-100"
       }`}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-20"}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-amber-500 rounded-xl flex items-center justify-center shadow-sm">
