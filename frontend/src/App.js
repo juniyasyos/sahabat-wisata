@@ -2,7 +2,9 @@ import { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary";
+import PageTransition from "./components/PageTransition";
 import "./App.css";
 
 /* Pages */
@@ -40,7 +42,26 @@ function AnimationObserver() {
     mo.observe(document.body, { childList: true, subtree: true });
     return () => { observer.disconnect(); mo.disconnect(); };
   }, []);
-  return null;
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
+        <Route path="/travel" element={<PageTransition><TravelCatalogPage /></PageTransition>} />
+        <Route path="/travel/:slug" element={<PageTransition><TravelDetailPage /></PageTransition>} />
+        <Route path="/wisata" element={<PageTransition><WisataCatalogPage /></PageTransition>} />
+        <Route path="/wisata/:slug" element={<PageTransition><WisataDetailPage /></PageTransition>} />
+        <Route path="/sewa-armada" element={<PageTransition><ArmadaCatalogPage /></PageTransition>} />
+        <Route path="/sewa-armada/:slug" element={<PageTransition><ArmadaDetailPage /></PageTransition>} />
+        <Route path="/rombongan" element={<PageTransition><RombonganPage /></PageTransition>} />
+        <Route path="/faq" element={<PageTransition><FAQPage /></PageTransition>} />
+        <Route path="/kontak" element={<PageTransition><KontakPage /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
 }
 
 export default function App() {
@@ -51,19 +72,7 @@ export default function App() {
           <ScrollToTop />
           <AnimationObserver />
           <Suspense fallback={<div className="min-h-screen bg-stone-50 flex items-center justify-center"><div className="w-8 h-8 border-4 border-amber-400 border-t-transparent rounded-full animate-spin" /></div>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/travel" element={<TravelCatalogPage />} />
-              <Route path="/travel/:slug" element={<TravelDetailPage />} />
-              <Route path="/wisata" element={<WisataCatalogPage />} />
-              <Route path="/wisata/:slug" element={<WisataDetailPage />} />
-              <Route path="/sewa-armada" element={<ArmadaCatalogPage />} />
-              <Route path="/sewa-armada/:slug" element={<ArmadaDetailPage />} />
-              <Route path="/rombongan" element={<RombonganPage />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/kontak" element={<KontakPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <AnimatedRoutes />
           </Suspense>
         </BrowserRouter>
       </HelmetProvider>
