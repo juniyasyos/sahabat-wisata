@@ -26,7 +26,7 @@ export default function FAQPage() {
   const filtered = activeCategory === "all" ? faqs : faqs.filter(f => f.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title="FAQ | Pertanyaan Umum tentang Layanan Sahabat Wisata Jember"
         description="Jawaban pertanyaan umum tentang travel antar kota, paket wisata, sewa armada, pembayaran, dan pemesanan Sahabat Wisata Jember."

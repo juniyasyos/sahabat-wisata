@@ -7,7 +7,7 @@ import SEO from "../components/SEO";
 
 export default function NotFoundPage() {
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col">
+    <div className="min-h-screen bg-stone-50 flex flex-col pt-16">
       <SEO
         title="Halaman Tidak Ditemukan (404)"
         description="Halaman yang Anda cari tidak ditemukan. Kembali ke beranda Sahabat Wisata Jember untuk layanan travel, wisata, dan sewa armada."

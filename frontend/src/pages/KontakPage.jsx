@@ -42,7 +42,7 @@ const contactItems = [
 
 export default function KontakPage() {
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title="Kontak Sahabat Wisata Jember | WA 0857-3243-1396"
         description="Hubungi Sahabat Wisata Jember via WhatsApp 0857-3243-1396. Kami siap membantu setiap hari 05:00–22:00 WIB untuk travel, wisata, dan sewa armada."

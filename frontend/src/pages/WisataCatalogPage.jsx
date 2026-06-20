@@ -15,7 +15,7 @@ export default function WisataCatalogPage() {
   const packages = tourPackages.filter(p => p.isActive);
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title="Paket Wisata dari Jember | Bromo, Ijen & Pantai Papuma"
         description="Open trip & private trip ke Bromo, Kawah Ijen, Papuma dari Jember. Transport, guide, tiket sudah termasuk. Mulai Rp 150.000/orang. Pesan via WA."

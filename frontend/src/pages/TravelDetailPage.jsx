@@ -20,7 +20,7 @@ export default function TravelDetailPage() {
   const waMsg = WA_MESSAGES.travel(route.origin, route.destination, "", "");
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title={`Travel ${route.origin} ${route.destination} Door-to-Door | Mulai ${formatPrice(route.basePrice)}`}
         description={`Travel ${route.origin}–${route.destination} mulai Rp ${route.basePrice.toLocaleString("id-ID")}/orang. Door-to-door, ${route.schedules.length}x keberangkatan/hari. Armada ber-AC, driver profesional. Pesan via WA.`}

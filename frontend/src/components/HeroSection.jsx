@@ -266,7 +266,7 @@ export default function HeroSection() {
 
   return (
     <section id="hero" data-testid="hero-section"
-      className="bg-white pt-16 sm:pt-0 overflow-hidden">
+      className="bg-white pt-16 overflow-hidden">
 
       {/* ── TOP: Split Layout ── */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

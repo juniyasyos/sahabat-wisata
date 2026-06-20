@@ -23,7 +23,7 @@ export default function ArmadaCatalogPage() {
   const activeFleets = fleets.filter(f => f.isActive);
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title="Sewa Armada dengan Driver di Jember | Hiace, Innova, Avanza"
         description="Rental Hiace, Innova, Avanza dengan driver berpengalaman di Jember. Untuk wisata, perjalanan dinas, rombongan. Harga transparan. Hubungi WA."

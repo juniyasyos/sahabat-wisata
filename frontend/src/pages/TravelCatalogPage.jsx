@@ -15,7 +15,7 @@ export default function TravelCatalogPage() {
   const routes = travelRoutes.filter(r => r.isActive);
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title="Travel Jember Antar Kota | Jadwal & Harga Terbaru"
         description="Jadwal & harga travel Jember ke Surabaya, Malang, Bali, Juanda. Door-to-door setiap hari. Armada ber-AC, driver profesional. Pesan via WhatsApp."

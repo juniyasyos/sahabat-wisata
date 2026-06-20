@@ -28,7 +28,7 @@ export default function ArmadaDetailPage() {
   const otherFleets = fleets.filter(f => f.slug !== slug && f.isActive);
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title={`Sewa ${fleet.name} dengan Driver di Jember | ${fleet.capacity} Seat`}
         description={`Sewa ${fleet.name} ${fleet.capacity} seat dengan driver berpengalaman di Jember. ${fleet.shortDescription} Hubungi admin WA untuk info harga.`}

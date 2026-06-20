@@ -26,7 +26,7 @@ export default function RombonganPage() {
   const waMsg = WA_MESSAGES.rombongan("", "", "", "Saya ingin konsultasi paket rombongan");
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title="Layanan Perjalanan Rombongan dari Jember | Grup & Study Tour"
         description="Paket perjalanan rombongan dari Jember. Study tour, wisata grup, gathering kantor, ibadah. Armada lengkap, harga kompetitif. Konsultasi gratis via WA."

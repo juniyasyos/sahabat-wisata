@@ -20,7 +20,7 @@ export default function WisataDetailPage() {
   const waMsg = WA_MESSAGES.wisata(pkg.name, "", "");
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <SEO
         title={`${pkg.name} dari Jember | ${pkg.type} Mulai Rp ${pkg.price.toLocaleString("id-ID")}`}
         description={`${pkg.type} ${pkg.name} dari Jember. ${pkg.highlights.slice(0,3).join(", ")}. Sudah termasuk transport, guide, tiket. Mulai Rp ${pkg.price.toLocaleString("id-ID")}/orang.`}
