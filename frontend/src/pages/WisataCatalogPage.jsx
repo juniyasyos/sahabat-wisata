@@ -92,16 +92,31 @@ export default function WisataCatalogPage() {
                   </div>
 
                   <div className="flex gap-2">
-                    <a href={buildWhatsAppUrl(WA_MESSAGES.wisata(pkg.name, "", ""))}
-                      target="_blank" rel="noopener noreferrer"
+                    <a
+                      href={buildWhatsAppUrl(WA_MESSAGES.wisata(pkg.name, "", ""))}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       data-testid={`tour-wa-${pkg.slug}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 bg-teal-500 hover:bg-teal-600 text-white py-2.5 rounded-xl text-sm font-medium font-sans transition-all duration-200">
-                      <MessageCircle size={14} />Tanya WA
+                      className="flex-1 flex items-center justify-center gap-1.5 bg-teal-500 hover:bg-teal-600 text-white py-2.5 rounded-xl text-sm font-medium font-sans transition-all duration-200"
+                    >
+                      <MessageCircle size={14} />
+                      Tanya Via WA
                     </a>
-                    <Link to={`/wisata/${pkg.slug}`}
+
+                    <Link
+                      to={`/wisata/${pkg.slug}`}
                       data-testid={`tour-detail-${pkg.slug}`}
-                      className="px-3 py-2.5 border border-stone-200 hover:bg-stone-50 rounded-xl text-stone-600 transition-colors">
-                      <ArrowRight size={15} />
+                      aria-label={`Lihat detail ${pkg.name}`}
+                      className="group flex items-center justify-center gap-1.5 w-11 hover:w-24 py-2.5 border border-stone-200 hover:bg-stone-50 rounded-xl text-stone-600 transition-all duration-300 overflow-hidden"
+                    >
+                      <ArrowRight
+                        size={15}
+                        className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+
+                      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-all duration-300 group-hover:max-w-16 group-hover:opacity-100">
+                        Detail
+                      </span>
                     </Link>
                   </div>
                 </div>

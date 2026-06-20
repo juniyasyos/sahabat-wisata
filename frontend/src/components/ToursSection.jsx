@@ -101,12 +101,24 @@ export default function ToursSection() {
                       data-testid={`tour-wa-${pkg.slug}`}
                       className="flex-1 flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-medium font-sans text-sm transition-all duration-200 hover:-translate-y-0.5"
                     >
-                      <MessageCircle size={15} />Tanya WA
+                      <MessageCircle size={15} />
+                      Tanya Via WA
                     </a>
-                    <Link to={`/wisata/${pkg.slug}`}
+
+                    <Link
+                      to={`/wisata/${pkg.slug}`}
                       data-testid={`tour-detail-${pkg.slug}`}
-                      className="px-3 py-3 border border-stone-200 hover:bg-stone-50 rounded-xl text-stone-600 transition-colors">
-                      <ArrowRight size={15} />
+                      aria-label={`Lihat detail ${pkg.name}`}
+                      className="group flex items-center justify-center gap-1.5 w-12 hover:w-24 py-3 border border-stone-200 hover:bg-stone-50 rounded-xl text-stone-600 transition-all duration-300 overflow-hidden"
+                    >
+                      <ArrowRight
+                        size={15}
+                        className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+
+                      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-all duration-300 group-hover:max-w-16 group-hover:opacity-100">
+                        Detail
+                      </span>
                     </Link>
                   </div>
                 </div>

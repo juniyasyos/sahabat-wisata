@@ -97,10 +97,17 @@ export default function RoutesSection() {
                   <Link
                     to={`/travel/${route.slug}`}
                     data-testid={`route-detail-${route.slug}`}
-                    className="px-3 py-2.5 border border-stone-200 rounded-xl text-stone-600 hover:bg-stone-50 transition-colors"
                     title="Lihat Detail"
+                    className="group flex items-center justify-center gap-1.5 w-11 hover:w-24 py-2.5 border border-stone-200 hover:bg-stone-50 rounded-xl text-stone-600 transition-all duration-300 overflow-hidden"
                   >
-                    <ArrowRight size={15} />
+                    <ArrowRight
+                      size={15}
+                      className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
+                    />
+
+                    <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-all duration-300 group-hover:max-w-16 group-hover:opacity-100">
+                      Detail
+                    </span>
                   </Link>
                 </div>
               </div>
