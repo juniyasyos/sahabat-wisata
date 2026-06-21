@@ -13,6 +13,12 @@
   100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
 }
 
+@keyframes calmWave {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-12%); }
+  100% { transform: translateX(0); }
+}
+
 html {
   scroll-behavior: smooth;
 }

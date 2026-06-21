@@ -7,10 +7,10 @@ import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 
 /* ─── Constants ─────────────────────────────────────────── */
 const TABS = [
-  { id: "travel",    label: "Travel",     icon: Plane },
-  { id: "wisata",    label: "Wisata",     icon: MapPin },
-  { id: "armada",    label: "Armada",     icon: Car },
-  { id: "rombongan", label: "Rombongan",  icon: Users },
+  { id: "travel", label: "Travel", icon: Plane },
+  { id: "wisata", label: "Wisata", icon: MapPin },
+  { id: "armada", label: "Armada", icon: Car },
+  { id: "rombongan", label: "Rombongan", icon: Users },
 ];
 
 const DESTINATIONS = [
@@ -22,13 +22,13 @@ const FLEET_OPTIONS = [
 const DURATION_OPTIONS = ["1 Hari", "2 Hari", "3 Hari", "Lebih dari 3 Hari"];
 
 const HERO_IMAGE = "/images/travel-hero.jpg";
-const CARD_IMAGE  = "/images/hero-card-1.jpg";
+const CARD_IMAGE = "/images/hero-card-1.jpg";
 const CARD_IMAGE2 = "/images/hero-card-2.jpg";
 
 const STATS = [
   { value: "500+", label: "Penumpang" },
-  { value: "5+",   label: "Tahun" },
-  { value: "3",    label: "Kota Tujuan Utama" },
+  { value: "5+", label: "Tahun" },
+  { value: "3", label: "Kota Tujuan Utama" },
 ];
 
 /* ─── Sub-components ─────────────────────────────────────── */
@@ -64,7 +64,7 @@ function TravelForm({ onSubmit }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <Field icon={MapPin}>
           <select className={`${inputCls} pl-8`} value={f.origin}
-            onChange={e => setF({...f, origin: e.target.value})} data-testid="travel-origin">
+            onChange={e => setF({ ...f, origin: e.target.value })} data-testid="travel-origin">
             <option value="Jember">Dari: Jember</option>
             <option value="Surabaya">Dari: Surabaya</option>
             <option value="Malang">Dari: Malang</option>
@@ -72,7 +72,7 @@ function TravelForm({ onSubmit }) {
         </Field>
         <Field icon={MapPin}>
           <select className={`${inputCls} pl-8 ${err && !f.destination ? "border-red-400" : ""}`}
-            value={f.destination} onChange={e => { setF({...f, destination: e.target.value}); setErr(false); }}
+            value={f.destination} onChange={e => { setF({ ...f, destination: e.target.value }); setErr(false); }}
             data-testid="travel-destination">
             <option value="">Tujuan</option>
             {DESTINATIONS.map(d => <option key={d}>{d}</option>)}
@@ -80,13 +80,13 @@ function TravelForm({ onSubmit }) {
         </Field>
         <Field icon={Calendar}>
           <input type="date" className={`${inputCls} pl-8 ${err && !f.date ? "border-red-400" : ""}`}
-            value={f.date} onChange={e => { setF({...f, date: e.target.value}); setErr(false); }}
+            value={f.date} onChange={e => { setF({ ...f, date: e.target.value }); setErr(false); }}
             min={new Date().toISOString().split("T")[0]} data-testid="travel-date" />
         </Field>
         <Field icon={Users}>
           <select className={`${inputCls} pl-8`} value={f.passengers}
-            onChange={e => setF({...f, passengers: e.target.value})} data-testid="travel-passengers">
-            {[1,2,3,4,5,6,7,8].map(n => <option key={n} value={n}>{n} Penumpang</option>)}
+            onChange={e => setF({ ...f, passengers: e.target.value })} data-testid="travel-passengers">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map(n => <option key={n} value={n}>{n} Penumpang</option>)}
           </select>
         </Field>
       </div>
@@ -107,7 +107,7 @@ function WisataForm({ onSubmit }) {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <Field icon={MapPin}>
           <select className={`${inputCls} pl-8`} value={f.destination}
-            onChange={e => setF({...f, destination: e.target.value})} data-testid="wisata-package">
+            onChange={e => setF({ ...f, destination: e.target.value })} data-testid="wisata-package">
             <option value="">Destinasi Wisata</option>
             <option>Bromo Sunrise</option>
             <option>Kawah Ijen Blue Fire</option>
@@ -117,13 +117,13 @@ function WisataForm({ onSubmit }) {
         </Field>
         <Field icon={Calendar}>
           <input type="date" className={`${inputCls} pl-8`} value={f.date}
-            onChange={e => setF({...f, date: e.target.value})}
+            onChange={e => setF({ ...f, date: e.target.value })}
             min={new Date().toISOString().split("T")[0]} data-testid="wisata-date" />
         </Field>
         <Field icon={Users}>
           <select className={`${inputCls} pl-8`} value={f.pax}
-            onChange={e => setF({...f, pax: e.target.value})} data-testid="wisata-pax">
-            {[1,2,3,4,5,6,8,10,15,20].map(n => <option key={n} value={n}>{n} Peserta</option>)}
+            onChange={e => setF({ ...f, pax: e.target.value })} data-testid="wisata-pax">
+            {[1, 2, 3, 4, 5, 6, 8, 10, 15, 20].map(n => <option key={n} value={n}>{n} Peserta</option>)}
           </select>
         </Field>
       </div>
@@ -143,25 +143,25 @@ function ArmadaForm({ onSubmit }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <Field icon={Car}>
           <select className={`${inputCls} pl-8`} value={f.fleet}
-            onChange={e => setF({...f, fleet: e.target.value})} data-testid="armada-fleet">
+            onChange={e => setF({ ...f, fleet: e.target.value })} data-testid="armada-fleet">
             <option value="">Jenis Armada</option>
             {FLEET_OPTIONS.map(o => <option key={o}>{o}</option>)}
           </select>
         </Field>
         <Field icon={Calendar}>
           <input type="date" className={`${inputCls} pl-8`} value={f.date}
-            onChange={e => setF({...f, date: e.target.value})}
+            onChange={e => setF({ ...f, date: e.target.value })}
             min={new Date().toISOString().split("T")[0]} data-testid="armada-date" />
         </Field>
         <Field icon={ChevronDown}>
           <select className={`${inputCls} pl-8`} value={f.duration}
-            onChange={e => setF({...f, duration: e.target.value})} data-testid="armada-duration">
+            onChange={e => setF({ ...f, duration: e.target.value })} data-testid="armada-duration">
             {DURATION_OPTIONS.map(d => <option key={d}>{d}</option>)}
           </select>
         </Field>
         <input type="text" placeholder="Tujuan / Rute…"
           className={inputCls} value={f.destination}
-          onChange={e => setF({...f, destination: e.target.value})}
+          onChange={e => setF({ ...f, destination: e.target.value })}
           data-testid="armada-destination" />
       </div>
       <SubmitBtn label="Tanya Harga Sewa via WhatsApp" />
@@ -180,20 +180,20 @@ function RombonganForm({ onSubmit }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <input type="text" placeholder="Tujuan rombongan…"
           className={inputCls} value={f.destination}
-          onChange={e => setF({...f, destination: e.target.value})}
+          onChange={e => setF({ ...f, destination: e.target.value })}
           data-testid="rombongan-destination" />
         <Field icon={Calendar}>
           <input type="date" className={`${inputCls} pl-8`} value={f.date}
-            onChange={e => setF({...f, date: e.target.value})}
+            onChange={e => setF({ ...f, date: e.target.value })}
             min={new Date().toISOString().split("T")[0]} data-testid="rombongan-date" />
         </Field>
         <input type="text" placeholder="Jumlah peserta"
           className={inputCls} value={f.pax}
-          onChange={e => setF({...f, pax: e.target.value})}
+          onChange={e => setF({ ...f, pax: e.target.value })}
           data-testid="rombongan-pax" />
         <input type="text" placeholder="Catatan tambahan (opsional)"
           className={inputCls} value={f.notes}
-          onChange={e => setF({...f, notes: e.target.value})}
+          onChange={e => setF({ ...f, notes: e.target.value })}
           data-testid="rombongan-notes" />
       </div>
       <SubmitBtn label="Konsultasi Rombongan via WhatsApp" />
@@ -222,7 +222,7 @@ function FloatingCard() {
         <div className="min-w-0">
           <p className="font-heading font-bold text-stone-900 text-sm leading-tight truncate">Gunung Bromo</p>
           <div className="flex items-center gap-0.5 mt-0.5">
-            {[1,2,3,4,5].map(i => (
+            {[1, 2, 3, 4, 5].map(i => (
               <Star key={i} size={10} className={i <= 4 ? "fill-amber-400 text-amber-400" : "fill-stone-200 text-stone-200"} />
             ))}
             <span className="text-stone-400 text-xs ml-1">4.8</span>
@@ -285,12 +285,29 @@ export default function HeroSection() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-heading font-extrabold text-stone-900 leading-[1.1] mb-4"
-              style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)" }}>
+            <h1 className="font-heading font-extrabold text-stone-900 leading-[1.1] mb-4 text-[clamp(2rem,4.5vw,3.25rem)]">
               Jelajahi Keindahan{" "}
-              <span className="relative">
-                <span className="relative z-10 text-amber-500">Indonesia</span>
-                <span className="absolute bottom-1 left-0 right-0 h-3 bg-amber-100 rounded -z-0 -skew-x-2" />
+              <span className="relative inline-block">
+                <span className="relative z-10 text-amber-600">
+                  Indonesia
+                </span>
+
+                <span className="absolute left-0 -bottom-1 h-4 w-full overflow-hidden -z-0">
+                  <svg
+                    className="h-full w-[200%] animate-[calmWave_3.5s_ease-in-out_infinite]"
+                    viewBox="0 0 240 16"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M0 10 C 20 3, 40 3, 60 10 S 100 17, 120 10 S 160 3, 180 10 S 220 17, 240 10"
+                      fill="none"
+                      stroke="rgb(253 230 138)"
+                      strokeWidth="8"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
               </span>{" "}
               Bersama Kami
             </h1>
@@ -355,11 +372,10 @@ export default function HeroSection() {
             {TABS.map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)}
                 data-testid={`tab-${tab.id}`}
-                className={`flex items-center gap-1.5 sm:gap-2 flex-1 min-w-[72px] sm:min-w-[90px] py-2 sm:py-2.5 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-medium font-sans transition-all duration-200 whitespace-nowrap justify-center ${
-                  activeTab === tab.id
-                    ? "bg-amber-500 text-white shadow-sm"
-                    : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"
-                }`}>
+                className={`flex items-center gap-1.5 sm:gap-2 flex-1 min-w-[72px] sm:min-w-[90px] py-2 sm:py-2.5 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-medium font-sans transition-all duration-200 whitespace-nowrap justify-center ${activeTab === tab.id
+                  ? "bg-amber-500 text-white shadow-sm"
+                  : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"
+                  }`}>
                 <tab.icon size={15} />
                 {tab.label}
               </button>
@@ -368,9 +384,9 @@ export default function HeroSection() {
 
           {/* Form */}
           <div className="bg-white rounded-2xl border border-stone-100 p-4 sm:p-5 shadow-sm">
-            {activeTab === "travel"    && <TravelForm onSubmit={handleSubmit} />}
-            {activeTab === "wisata"    && <WisataForm onSubmit={handleSubmit} />}
-            {activeTab === "armada"    && <ArmadaForm onSubmit={handleSubmit} />}
+            {activeTab === "travel" && <TravelForm onSubmit={handleSubmit} />}
+            {activeTab === "wisata" && <WisataForm onSubmit={handleSubmit} />}
+            {activeTab === "armada" && <ArmadaForm onSubmit={handleSubmit} />}
             {activeTab === "rombongan" && <RombonganForm onSubmit={handleSubmit} />}
           </div>
         </div>
