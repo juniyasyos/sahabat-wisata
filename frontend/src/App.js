@@ -80,6 +80,7 @@ export default function App() {
           </Suspense>
         </BrowserRouter>
       </HelmetProvider>
+      <SpeedInsights />
     </ErrorBoundary>
   );
 }

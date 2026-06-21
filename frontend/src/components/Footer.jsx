@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Share2 } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 import { siteConfig } from "../data/siteConfig";
@@ -40,7 +40,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://tiktok.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-9 h-9 bg-stone-800 hover:bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
@@ -51,7 +51,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-9 h-9 bg-stone-800 hover:bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
@@ -64,7 +64,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-9 h-9 bg-stone-800 hover:bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
