@@ -5,7 +5,6 @@ import { HelmetProvider } from "react-helmet-async";
 import { AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PageTransition from "./components/PageTransition";
-import FloatingWAButton from "./components/FloatingWAButton";
 import "./App.css";
 
 /* Pages */
@@ -78,7 +77,6 @@ export default function App() {
           <Suspense fallback={<div className="min-h-screen bg-stone-50 flex items-center justify-center"><div className="w-8 h-8 border-4 border-amber-400 border-t-transparent rounded-full animate-spin" /></div>}>
             <AnimatedRoutes />
           </Suspense>
-          <FloatingWAButton />
         </BrowserRouter>
       </HelmetProvider>
     </ErrorBoundary>
