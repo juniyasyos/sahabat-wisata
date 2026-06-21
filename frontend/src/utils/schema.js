@@ -25,7 +25,7 @@ export function schemaLocalBusiness() {
       "Layanan travel antar kota, paket wisata Bromo & Ijen, dan sewa armada dari Jember. Door-to-door service, driver profesional, beroperasi sejak 2019.",
     url: SITE_URL,
     logo: `${SITE_URL}/logo192.png`,
-    image: "/images/travel-hero.jpg",
+    image: "/images/travel-hero.webp",
     telephone: WA_NUMBER,
     address: ADDRESS,
     geo: {

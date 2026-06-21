@@ -21,9 +21,9 @@ const FLEET_OPTIONS = [
 ];
 const DURATION_OPTIONS = ["1 Hari", "2 Hari", "3 Hari", "Lebih dari 3 Hari"];
 
-const HERO_IMAGE = "/images/travel-hero.jpg";
-const CARD_IMAGE = "/images/hero-card-1.jpg";
-const CARD_IMAGE2 = "/images/hero-card-2.jpg";
+const HERO_IMAGE = "/images/travel-hero.webp";
+const CARD_IMAGE = "/images/hero-card-1.webp";
+const CARD_IMAGE2 = "/images/hero-card-2.webp";
 
 const STATS = [
   { value: "500+", label: "Penumpang" },

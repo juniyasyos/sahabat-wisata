@@ -37,7 +37,7 @@ export default function ArmadaCatalogPage() {
       <PageHero
         title="Sewa Armada dengan Driver"
         subtitle="Rental kendaraan + driver profesional untuk wisata, perjalanan dinas, atau event khusus."
-        image="/images/fleet-1.jpg"
+        image="/images/fleet-1.webp"
         badge="Sewa Armada"
         breadcrumbs={[{ label: "Sewa Armada" }]}
         height="h-60 sm:h-72"
