@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PageTransition from "./components/PageTransition";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import "./App.css";
 
 /* Pages */
