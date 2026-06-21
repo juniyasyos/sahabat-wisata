@@ -76,7 +76,7 @@ export const travelRoutes = [
     estimatedDuration: "7–9 jam",
     shortDescription: "Travel eksekutif Jember–Denpasar Bali, sudah termasuk tiket ferry.",
     description: "Layanan travel malam dari Jember ke Bali. Sudah termasuk tiket penyeberangan Ketapang–Gilimanuk. Armada nyaman untuk perjalanan panjang, dilengkapi selimut dan makanan ringan.",
-    image: "https://images.unsplash.com/photo-1560103104-4623c14a473b?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
+    image: "/images/travel-hero.jpg",
     facilities: ["AC", "Tiket Ferry", "Reclining Seat", "Selimut", "Makan 1x", "Door-to-Door"],
     schedules: ["15:00 WIB", "21:00 WIB"],
     pickupPoints: [

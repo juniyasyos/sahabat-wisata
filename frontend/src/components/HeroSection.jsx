@@ -21,9 +21,9 @@ const FLEET_OPTIONS = [
 ];
 const DURATION_OPTIONS = ["1 Hari", "2 Hari", "3 Hari", "Lebih dari 3 Hari"];
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1560103104-4623c14a473b?crop=entropy&cs=srgb&fm=jpg&q=90&w=1400";
-const CARD_IMAGE  = "https://images.pexels.com/photos/28386069/pexels-photo-28386069.jpeg?auto=compress&cs=tinysrgb&w=200";
-const CARD_IMAGE2 = "https://images.pexels.com/photos/12397207/pexels-photo-12397207.jpeg?auto=compress&cs=tinysrgb&w=200";
+const HERO_IMAGE = "/images/travel-hero.jpg";
+const CARD_IMAGE  = "/images/hero-card-1.jpg";
+const CARD_IMAGE2 = "/images/hero-card-2.jpg";
 
 const STATS = [
   { value: "500+", label: "Penumpang" },

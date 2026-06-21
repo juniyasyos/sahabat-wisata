@@ -3,7 +3,6 @@ import { MessageCircle, Users, MapPin, ClipboardList, CheckCircle } from "lucide
 import { buildWhatsAppUrl, WA_MESSAGES } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import CTABanner from "../components/CTABanner";
 import PageHero from "../components/PageHero";
 import SEO from "../components/SEO";
@@ -123,7 +122,6 @@ export default function RombonganPage() {
 
       <CTABanner />
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

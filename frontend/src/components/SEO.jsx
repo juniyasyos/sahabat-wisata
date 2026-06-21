@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "Sahabat Wisata Jember";
 const SITE_URL = "https://sahabatwisatajember.com";
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1560103104-4623c14a473b?w=1200&q=80";
+const DEFAULT_IMAGE = "/images/travel-hero.jpg";
 
 /**
  * SEO component — pasang di setiap halaman.

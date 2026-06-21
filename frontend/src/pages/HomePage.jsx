@@ -11,7 +11,6 @@ import TestimoniSection from "../components/TestimoniSection";
 import FAQSection from "../components/FAQSection";
 import CTABanner from "../components/CTABanner";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import SEO from "../components/SEO";
 import { schemaLocalBusiness, schemaFAQ } from "../utils/schema";
 import { faqs } from "../data/faqs";
@@ -42,7 +41,6 @@ export default function HomePage() {
         <CTABanner />
       </main>
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

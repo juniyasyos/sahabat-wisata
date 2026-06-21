@@ -4,7 +4,6 @@ import { tourPackages } from "../data/tourPackages";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import PageHero from "../components/PageHero";
 import CTABanner from "../components/CTABanner";
 import FAQSection from "../components/FAQSection";
@@ -129,7 +128,6 @@ export default function WisataCatalogPage() {
       <FAQSection />
       <CTABanner />
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

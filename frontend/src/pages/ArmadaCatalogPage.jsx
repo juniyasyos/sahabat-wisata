@@ -4,7 +4,6 @@ import { fleets } from "../data/fleets";
 import { buildWhatsAppUrl, WA_MESSAGES, formatPrice } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import PageHero from "../components/PageHero";
 import CTABanner from "../components/CTABanner";
 import FAQSection from "../components/FAQSection";
@@ -38,7 +37,7 @@ export default function ArmadaCatalogPage() {
       <PageHero
         title="Sewa Armada dengan Driver"
         subtitle="Rental kendaraan + driver profesional untuk wisata, perjalanan dinas, atau event khusus."
-        image="https://images.unsplash.com/photo-1534011056808-50c1c6082fe7?w=1600&q=80"
+        image="/images/fleet-1.jpg"
         badge="Sewa Armada"
         breadcrumbs={[{ label: "Sewa Armada" }]}
         height="h-60 sm:h-72"
@@ -143,7 +142,6 @@ export default function ArmadaCatalogPage() {
       <FAQSection />
       <CTABanner />
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

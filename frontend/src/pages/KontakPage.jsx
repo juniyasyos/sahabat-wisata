@@ -4,7 +4,6 @@ import { buildWhatsAppUrl } from "../utils/whatsapp";
 import { siteConfig } from "../data/siteConfig";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import PageHero from "../components/PageHero";
 import SEO from "../components/SEO";
 import { schemaLocalBusiness, schemaBreadcrumb } from "../utils/schema";
@@ -125,7 +124,6 @@ export default function KontakPage() {
       </section>
 
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

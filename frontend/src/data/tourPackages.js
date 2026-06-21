@@ -96,7 +96,7 @@ export const tourPackages = [
     minPax: 2,
     shortDescription: "Gabungan dua destinasi ikonik Jawa Timur — Bromo dan Ijen — dalam satu perjalanan.",
     description: "Paket private trip 2 hari 1 malam yang menggabungkan keindahan Gunung Bromo dan Kawah Ijen. Cocok untuk pasangan, keluarga, atau grup kecil yang ingin menjelajahi dua destinasi terbaik Jawa Timur sekaligus.",
-    image: "https://images.unsplash.com/photo-1518043610038-064362b44076?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
+    image: "/images/tour-package.jpg",
     highlights: ["Sunrise Bromo", "Kawah Bromo + Savana", "Blue Fire Ijen", "Sunrise Kawah Ijen", "Penginapan inklusif"],
     includes: [
       "Transportasi private PP Jember (AC)",

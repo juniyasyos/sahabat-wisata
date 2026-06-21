@@ -4,7 +4,6 @@ import { faqs } from "../data/faqs";
 import { buildWhatsAppUrl } from "../utils/whatsapp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import CTABanner from "../components/CTABanner";
 import PageHero from "../components/PageHero";
 import SEO from "../components/SEO";
@@ -101,7 +100,6 @@ export default function FAQPage() {
 
       <CTABanner />
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

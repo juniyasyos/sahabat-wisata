@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Home } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FloatingWAButton from "../components/FloatingWAButton";
 import SEO from "../components/SEO";
 
 export default function NotFoundPage() {
@@ -33,7 +32,6 @@ export default function NotFoundPage() {
         </div>
       </div>
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }

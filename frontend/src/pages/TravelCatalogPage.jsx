@@ -6,7 +6,6 @@ import PageHero from "../components/PageHero";
 import CTABanner from "../components/CTABanner";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import FloatingWAButton from "../components/FloatingWAButton";
 import FAQSection from "../components/FAQSection";
 import SEO from "../components/SEO";
 import { schemaItemList, schemaBreadcrumb } from "../utils/schema";
@@ -121,7 +120,6 @@ export default function TravelCatalogPage() {
       <FAQSection />
       <CTABanner />
       <Footer />
-      <FloatingWAButton />
     </div>
   );
 }
